@@ -31,16 +31,18 @@
   p {
     color: #1c1c1c80;
     line-height: 30px;
+    margin: 2rem 0;
   }
 
   h1,
   p {
-    margin: 0 10% 0 10%;
+    // margin: 0 10% 0 10%;
+    // margin: 10px;
     text-align: left;
   }
 
   .get-paid {
-    margin-bottom: 2rem;
+    margin: 0;
   }
 
   .search {
@@ -54,13 +56,14 @@
   }
 
   img {
-    opacity: 75%;
+    opacity: 70%;
     align-self: center;
     max-width: 25rem;
+    margin-top: 3.3rem;
   }
 
   .build {
-    margin-top: 1rem;
+    margin: 0;
   }
 }
 
@@ -85,11 +88,37 @@
   }
 }
 
-#white-box
+#white-box-content > form > div.MuiBox-root.css-ece9u5 > div > div > fieldset,
+#white-box-content
   > form
   > div.MuiFormControl-root.MuiTextField-root.makeStyles-textfield-3.css-1u3bzj6-MuiFormControl-root-MuiTextField-root
   > div
-  > fieldset,
-#white-box > form > div.MuiBox-root.css-ece9u5 > div > div > fieldset {
+  > fieldset {
   border: none;
+}
+
+#white-box-content > form > div.MuiBox-root.css-ece9u5 > div > div > svg {
+  color: white;
+}
+
+#white-box-content > form > div.MuiBox-root.css-ece9u5 > div {
+  margin: 7px;
+  height: 48px;
+  border: none;
+}
+
+.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.MuiSelect-select {
+  padding: 14px 15px;
+}
+
+#white-box-content
+  > form
+  > div.MuiFormControl-root.MuiTextField-root.makeStyles-textfield-3.css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
+  margin-left: 15px;
+}
+
+#white-box-content {
+  margin: 0rem 4.4rem;
+  display: flex;
+  flex-direction: column;
 }

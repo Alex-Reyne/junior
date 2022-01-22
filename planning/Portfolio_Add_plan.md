@@ -4,6 +4,8 @@
 
 ### ------------ DONE -------------
 
+### 10_accepted_gigs
+
 - id: serial primary key
 - gig_id: fk
 - junior_dev_id: fk

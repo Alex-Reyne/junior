@@ -1,7 +1,7 @@
 // DB queries for GIG APPLICATIONS //
 
 module.exports = db => {
-  /* Retrieve all gig application data, gig posting data,
+	/* Retrieve all gig application data, gig posting data,
       employer email, company_name, bio, photo_url,
       junior_dev email, first_name, last_name, headline, bio, photo_url,
       github_url, linkedIn_url, resume_url, location
@@ -58,7 +58,7 @@ module.exports = db => {
 			.then(result => result.rows[0])
 			.catch(err => err);
 	};
-  return {
+	return {
 		getGigApplicationById,
 		addGigApplication,
 		acceptGigApplication,

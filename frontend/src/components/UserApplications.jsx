@@ -63,10 +63,10 @@ export default function UserApplications(props) {
 
 	const parsedJobApplications = jobApplicationsArray.map(application => {
 		return (
-			<Grid item xs={12} md={6} key={'Job-application-grid-' + application.id}>
-				<Card key={'Job-application-Card-' + application.id}>
+			<Grid item xs={12} md={6} key={'Job-application-grid-' + application.app_id}>
+				<Card key={'Job-application-Card-' + application.app_id}>
 					<UserApplicationCard
-						key={'Job-application-card-' + application.id}
+						key={'Job-application-card-' + application.app_id}
 						type='job'
 						applications={applications}
 						setApplications={setApplications}

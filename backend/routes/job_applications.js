@@ -30,7 +30,9 @@ module.exports = ({
 	});
 
 	router.post('/delete/:id', (req, res) => {
-		console.log('IN HELPER',req.params.id)
+		console.log('delete',req.query);
+		console.log('delete',req.params);
+		console.log('delete',req);
 		deleteJobApplication(req.params.id)
 			.then(application => res.json(application))
 			.catch(err =>

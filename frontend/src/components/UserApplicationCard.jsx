@@ -54,14 +54,16 @@ export default function ApplicationCard(props) {
 	const deleteApplication = id => {
 		const type = job_posting_id ? 'job_applications' : 'gig_applications';
 		console.log('delete', type, id);
-		axios
-			.post(`../api/${type}/delete/${id}`)
+		console.log(`/api/${type}/delete/${id}`);
+		return axios
+			.delete(`/api/${type}/delete/${id}`)
 			.then(res => {
-				view === 'job' ?
-				setView('all') :
-				view === 'gig' ?
-				setView('all') :
-				setView('job')
+				console.log('delete successful');
+				// view === 'job' ?
+				// setView('all') :
+				// view === 'gig' ?
+				// setView('all') :
+				// setView('job')
 			})
 			.catch(err => console.log(err))
 	}

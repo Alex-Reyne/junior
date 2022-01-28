@@ -3,12 +3,13 @@
 #signup-box {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-around;
+	justify-content: space-between;
+	padding: 4rem 0;
 	margin: 12rem 0 0 8rem;
 	min-width: 40%;
 	min-height: 70vh;
-	border-radius: 1%;
-	background: #ffffff75;
+	border-radius: 2rem;
+	background: #ffffffae;
 	position: absolute;
 	z-index: 0;
 
@@ -58,18 +59,19 @@
 			}
 		}
 
-		.already-signed-up {
+		.login {
 			margin: 1rem 10% 0 10%;
 			text-align: left;
-			align-self: left;
+			align-self: center;
 			text-decoration: none;
 			color: #0091ffa8;
 		}
-	}
 
-	.signup {
-		margin: 1rem 0 2rem 0;
-		align-self: center;
+		#contact-info {
+			align-self: center;
+			text-decoration: none;
+			color: #0091ffa8;
+		}
 	}
 
 	.signup-footer {

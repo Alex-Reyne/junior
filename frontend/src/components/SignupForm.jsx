@@ -11,19 +11,30 @@ export default function Login(props) {
 
 	const navigate = useNavigate();
 
-	const login = e => {
+	const signup = e => {
 		e.preventDefault();
 
-		const data = {
+		const loginData = {
 			email: document.getElementById('email').value,
 			password: document.getElementById('password').value,
 		};
+		const signupData = {
+			email: document.getElementById('email').value,
+			password: document.getElementById('password').value,
+			phone_number: document.getElementById('phone-number').value,
+			github_url: document.getElementById('github-url').value,
+		};
 
 		axios
-			.post('/api/auth/login', data)
+			.post('/api/dev/signup', signupData)
 			.then(res => {
-				setCurrentUser(res.data);
-				console.log(res.data);
+				console.log(res);
+			})
+			.then(res => {
+				axios.post('/api/auth/login', loginData).then(res => {
+					setCurrentUser(res.data);
+					console.log(res.data);
+				});
 			})
 			.catch(err => {
 				console.log(err);
@@ -42,7 +53,7 @@ export default function Login(props) {
 	return (
 		<div>
 			<div id='signup-box'>
-				<form className='signup' onSubmit={login}>
+				<form className='signup' onSubmit={signup}>
 					<h1>Sign up for a new account</h1>
 					<h2>
 						Sign up now to get started building your portolfio and launch your
@@ -51,6 +62,7 @@ export default function Login(props) {
 					<TextField
 						sx={{ mt: '0rem', ml: '10%', mr: '10%' }}
 						id='email'
+						type='email'
 						label='Email'
 					/>
 					<TextField
@@ -60,7 +72,19 @@ export default function Login(props) {
 						type='password'
 						variant='outlined'
 					/>
-
+					<div id='contact-info'>
+						<TextField
+							sx={{ mt: '1rem' }}
+							id='phone-number'
+							type='number'
+							label='phone-number'
+						/>
+						<TextField
+							sx={{ mt: '1rem', ml: '1rem' }}
+							id='github-url'
+							label='Github Link'
+						/>
+					</div>
 					<Button
 						sx={{ ml: '10%', mr: '10%', mt: '1rem' }}
 						variant='contained'
@@ -70,7 +94,7 @@ export default function Login(props) {
 					>
 						Sign Up
 					</Button>
-					<Link className='already-signed-up' to='/' onClick={handleLoginView}>
+					<Link className='login' to='/' onClick={handleLoginView}>
 						Already have an account?
 					</Link>
 				</form>

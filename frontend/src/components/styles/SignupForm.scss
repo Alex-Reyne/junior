@@ -1,0 +1,95 @@
+@import 'variables';
+
+#signup-box {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	margin: 12rem 0 0 8rem;
+	min-width: 40%;
+	min-height: 70vh;
+	border-radius: 1%;
+	background: #ffffff75;
+	position: absolute;
+	z-index: 0;
+
+	p {
+		color: #1c1c1c56;
+
+		a {
+			color: #0091ffa8;
+			text-decoration: none;
+		}
+	}
+
+	.signup {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+
+		h1,
+		h2 {
+			margin: 0 10% 0 10%;
+			text-align: left;
+		}
+
+		h1 {
+			font-size: 40px;
+			color: $blue;
+		}
+
+		h2 {
+			font-size: 20px;
+			font-weight: lighter;
+			color: #1c1c1c56;
+			margin-top: 1rem;
+			margin-bottom: 2rem;
+		}
+
+		button {
+			@include solid;
+		}
+
+		p {
+			color: #1c1c1c56;
+
+			a {
+				color: #0091ffa8;
+				text-decoration: none;
+			}
+		}
+
+		.already-signed-up {
+			margin: 1rem 10% 0 10%;
+			text-align: left;
+			align-self: left;
+			text-decoration: none;
+			color: #0091ffa8;
+		}
+	}
+
+	.signup {
+		margin: 1rem 0 2rem 0;
+		align-self: center;
+	}
+
+	.signup-footer {
+		font-size: small;
+		display: flex;
+		align-self: flex-center;
+		justify-content: space-around;
+	}
+}
+
+@media only screen and (min-width: 1900px) {
+	.signup-footer {
+		font-size: small;
+		display: flex;
+		align-self: flex-center;
+		justify-content: space-around;
+		margin-top: 2rem;
+
+		p {
+			margin: 0;
+		}
+	}
+}

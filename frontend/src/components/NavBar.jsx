@@ -8,7 +8,7 @@ import UserMenu from '../components/UserMenu';
 import axios from 'axios';
 
 export default function NavBar(props) {
-	const { handleLoginView } = props;
+	const { handleLoginView, handleSignupView } = props;
 	const { currentUser, setCurrentUser } = useContext(UserContext);
 
 	const location = useLocation();
@@ -57,7 +57,11 @@ export default function NavBar(props) {
 						</Button>
 					)}
 					{!currentUser.id && (
-						<Button id='signup' variant='contained'>
+						<Button
+							id='signup'
+							variant='contained'
+							onClick={e => handleSignupView()}
+						>
 							Sign Up
 						</Button>
 					)}

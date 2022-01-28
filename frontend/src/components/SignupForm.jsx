@@ -1,4 +1,4 @@
-import './styles/LoginForm.scss';
+import './styles/SignupForm.scss';
 import { TextField, Button } from '@mui/material';
 import axios from 'axios';
 import { useEffect, useContext } from 'react';
@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../Providers/userProvider';
 
 export default function Login(props) {
-	const { handleLoginView, handleSignupView } = props;
+	const { handleSignupView, handleLoginView } = props;
 	const { currentUser, setCurrentUser } = useContext(UserContext);
 
 	const navigate = useNavigate();
@@ -36,16 +36,16 @@ export default function Login(props) {
 		} else {
 			navigate(`/dev/${currentUser.id}`);
 		}
-		handleLoginView();
+		handleSignupView();
 	}, [currentUser]);
 
 	return (
 		<div>
-			<div id='login-box'>
-				<form className='login' onSubmit={login}>
-					<h1>Log in to your account</h1>
+			<div id='signup-box'>
+				<form className='signup' onSubmit={login}>
+					<h1>Sign up for a new account</h1>
 					<h2>
-						Log in now to get started building your portolfio and launch your
+						Sign up now to get started building your portolfio and launch your
 						career
 					</h2>
 					<TextField
@@ -60,9 +60,7 @@ export default function Login(props) {
 						type='password'
 						variant='outlined'
 					/>
-					<Link className='forgot-password' to='/' onClick={handleLoginView}>
-						Forgot password?
-					</Link>
+
 					<Button
 						sx={{ ml: '10%', mr: '10%', mt: '1rem' }}
 						variant='contained'
@@ -70,23 +68,20 @@ export default function Login(props) {
 						type='submit'
 						onClick={null}
 					>
-						LOG IN
+						Sign Up
 					</Button>
-					<p className='signup'>
-						Not registered yet?{' '}
-						<Link to='/' onClick={handleSignupView}>
-							Create an account
-						</Link>
-					</p>
+					<Link className='already-signed-up' to='/' onClick={handleLoginView}>
+						Already have an account?
+					</Link>
 				</form>
-				<div className='login-footer'>
+				<div className='signup-footer'>
 					<p>© 2020 Junior. All rights reserved</p>
 					<p className='tos-text'>
-						<Link to='/' onClick={handleLoginView}>
+						<Link to='/' onClick={handleSignupView}>
 							Terms of Service
 						</Link>{' '}
 						-{' '}
-						<Link to='/' onClick={handleLoginView}>
+						<Link to='/' onClick={handleSignupView}>
 							Privacy Policy
 						</Link>
 					</p>

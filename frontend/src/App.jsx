@@ -28,20 +28,37 @@ import UserAcceptedGigs from './components/UserAcceptedGigs.jsx';
 function App() {
 	const { currentUser } = useContext(UserContext);
 	const [loginView, setLoginView] = useState(false);
+	const [signupView, setSignupView] = useState(false);
 	let navigate = useNavigate();
 
 	const handleLoginView = e => {
 		if (currentUser.id) {
 			setLoginView(false);
+			setSignupView(false);
 		} else {
 			navigate('/');
+			setSignupView(false);
 			setLoginView(true);
+		}
+	};
+
+	const handleSignupView = e => {
+		if (currentUser.id) {
+			setLoginView(false);
+			setSignupView(false);
+		} else {
+			navigate('/');
+			setLoginView(false);
+			setSignupView(true);
 		}
 	};
 
 	return (
 		<div className='App'>
-			<NavBar handleLoginView={handleLoginView} />
+			<NavBar
+				handleLoginView={handleLoginView}
+				handleSignupView={handleSignupView}
+			/>
 			<Routes>
 				<Route
 					path='/'
@@ -49,6 +66,8 @@ function App() {
 						<LandingPage
 							loginView={loginView}
 							handleLoginView={handleLoginView}
+							signupView={signupView}
+							handleSignupView={handleSignupView}
 						/>
 					}
 				/>

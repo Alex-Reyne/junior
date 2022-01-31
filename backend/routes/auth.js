@@ -1,6 +1,6 @@
 const express = require('express');
-const bcrypt = require('bcryptjs');
 const router = express.Router();
+const bcrypt = require('bcryptjs');
 
 module.exports = ({ getUserByEmail }) => {
 	// get email and password from form
@@ -11,11 +11,20 @@ module.exports = ({ getUserByEmail }) => {
 		getUserByEmail(submittedEmail)
 			.then(dev => {
 				// authenticate
-				if (bcrypt.compareSync(submittedPassword, dev.password)) {
-					res.cookie('email', dev.email);
-					res.json(dev);
+				if (submittedPassword.length <= 3) {
+					if (dev.password === submittedPassword) {
+						res.cookie('email', dev.email);
+						res.json(dev);
+					} else {
+						res.json(false);
+					}
 				} else {
-					res.json(false);
+					if (bcrypt.compareSync(submittedPassword, dev.password)) {
+						res.cookie('email', dev.email);
+						res.json(dev);
+					} else {
+						res.json(false);
+					}
 				}
 			})
 			.catch(err =>

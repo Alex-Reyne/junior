@@ -9,6 +9,7 @@ module.exports = ({
 	getGigApplicationsByDevId,
 	getAcceptedGigs,
 	editProfile,
+	userSignup,
 }) => {
 	/* GET list of all devs */
 	router.get('/', (req, res) => {
@@ -83,6 +84,16 @@ module.exports = ({
 	//Update user profile 3001/api/devs/edit/1
 	router.post('/edit', (req, res) => {
 		editProfile(req.body)
+			.then(profile => res.json(profile))
+			.catch(err =>
+				res.json({
+					error: err.message,
+				})
+			);
+	});
+
+	router.post('/signup', (req, res) => {
+		userSignup(req.body)
 			.then(profile => res.json(profile))
 			.catch(err =>
 				res.json({

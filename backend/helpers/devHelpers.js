@@ -1,3 +1,5 @@
+const bcrypt = require('bcrypt');
+
 // DB queries for DEVS //
 
 module.exports = db => {
@@ -236,6 +238,26 @@ module.exports = db => {
 			.catch(err => err);
 	};
 
+	const userSignup = function (user) {
+		const query = {
+			text: `
+  			INSERT into junior_devs (first_name, last_name, email, password)
+  			VALUES ($1, $2, $3, $4)
+  			RETURNING *
+  		`,
+			values: [
+				user.first_name,
+				user.last_name,
+				user.email,
+				bcrypt.hashSync(user.password, 10),
+			],
+		};
+		return db
+			.query(query)
+			.then(res => console.log(res))
+			.catch(err => err);
+	};
+
 	return {
 		getUserByEmail,
 		getDevs,
@@ -245,6 +267,7 @@ module.exports = db => {
 		getGigApplicationsByDevId,
 		getAcceptedGigs,
 		editProfile,
+		userSignup,
 		// addDev,
 		// getAcceptedJobApplications,
 		// getAcceptedGigApplications,

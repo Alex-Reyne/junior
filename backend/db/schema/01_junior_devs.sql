@@ -5,7 +5,7 @@ CREATE TABLE "junior_devs" (
   "first_name" VARCHAR(50) NOT NULL,
   "last_name" VARCHAR(50) NOT NULL,
   "email" VARCHAR(50) NOT NULL,
-  "password" VARCHAR(50) NOT NULL,
+  "password" VARCHAR(500) NOT NULL,
   "phone_number" VARCHAR(25),
   "city" VARCHAR(25),
   "headline" VARCHAR(25),

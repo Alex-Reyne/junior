@@ -1,149 +1,157 @@
 @import '../variables';
 
 .dialog-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  text-align: justify;
-  padding: 0 1em;
-  background: $blue;
-  color: $white;
-  align-items: flex-start;
-  overflow-wrap: break-word;
-  width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	text-align: justify;
+	padding: 0 1em;
+	background: $blue;
+	color: $white;
+	align-items: flex-start;
+	overflow-wrap: break-word;
+	width: 100%;
 
-  h1 {
-    color: $sand;
-  }
+	h1 {
+		color: $sand;
+	}
 
-  button {
-    color: $white;
-    background-color: $blue;
-  }
+	button {
+		color: $white;
+		background-color: $blue;
+	}
 
-  .profile-pic {
-    padding: 1em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  }
+	.profile-pic {
+		padding: 1em;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+	}
 
-  img#profile-pic {
-    max-width: 150px;
-    height: auto;
-    border-radius: 50%;
-  }
+	img#profile-pic {
+		max-width: 150px;
+		height: auto;
+		border-radius: 50%;
+	}
 
-  .profile-info {
-    width: auto;
-  }
-  .application-info {
-    justify-content: space-evenly;
-  }
+	.profile-info {
+		width: auto;
+	}
+	.application-info {
+		justify-content: space-evenly;
+	}
+}
+
+.MuiDialog-paper {
+	background-color: $blue;
+	color: #fff;
+	border-radius: 2rem;
 }
 
 #apply-user-photo {
-  border-radius: 50%;
-  width: 200px;
-  height: 200px;
-  margin-bottom: 20px;
-  border: 3px solid #182c5b;
-  box-shadow: 0px 3px 8px rgba(8, 35, 48, 0.5);
-  object-fit: cover;
+	border-radius: 50%;
+	width: 200px;
+	height: 200px;
+	margin-bottom: 20px;
+	padding: 0.25rem;
+	background-color: #fff;
+	box-shadow: 3px 3px 10px #00000025;
+	object-fit: cover;
 }
 
 .apply-profile-data {
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
+	display: flex;
+	justify-content: space-around;
+	flex-direction: column;
 }
 
 .apply-profile-pic {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  a {
-    text-decoration: none;
-    color: white;
-  }
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	a {
+		text-decoration: none;
+		color: white;
+	}
 }
 
 .apply-phone-city {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 #city {
-  margin-left: 20px;
+	margin-left: 20px;
 }
 
 #job-title {
-  text-align: center;
+	text-align: center;
 }
 
 .apply-profile-bio {
-  margin: auto auto 40px auto;
-  max-width: 660px;
+	margin: auto auto 40px auto;
+	max-width: 660px;
 }
 
 #apply-name {
-  font-size: 30px;
+	font-size: 30px;
 }
 
 #apply-headline {
-  margin: 8px 0;
+	margin: 8px 0;
 }
 #apply-name-headline {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .apply-user-info {
-  h4 {
-    margin: 10px 0;
-  }
+	h4 {
+		margin: 10px 0;
+	}
 }
 
 .btn-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 30px;
-  button {
-    margin: 0 10px;
-  }
+	display: flex;
+	justify-content: center;
+	margin-top: 30px;
+	button {
+		margin: 0 10px;
+	}
 }
 
 #job-title {
-  font-size: 40px;
+	font-size: 40px;
 }
 
 .submitted-container {
-  margin: 1rem;
+	margin: 2rem;
 }
 
 #submitted-msg {
-  text-align: center;
+	text-align: center;
+	margin-bottom: 2rem;
 }
 
 #submitted-actions {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
+	display: flex;
+	justify-content: space-around;
+	gap: 10px;
 }
 
 .apply-text-icon {
-  display: flex;
-  align-items: center;
-  h3,
-  h4 {
-    margin-left: 5px;
-  }
+	display: flex;
+	align-items: center;
+	h3,
+	h4 {
+		margin-left: 5px;
+	}
 }
 
 #submitted-msg {
-  font-weight: 700;
+	font-weight: 700;
 }

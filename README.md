@@ -52,6 +52,7 @@ express: ~4.16.1,
 morgan: ~1.9.1,
 pg: ^8.7.1,
 pg-native: ^3.0.0
+bcryptjs: ^2.4.3,
 ```
 
 ### Front end

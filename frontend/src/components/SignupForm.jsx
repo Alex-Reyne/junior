@@ -9,6 +9,7 @@ export default function Login(props) {
 	const { handleSignupView, handleLoginView } = props;
 	const { currentUser, setCurrentUser } = useContext(UserContext);
 	const [matchPass, setMatchPass] = useState(true);
+	const [emailInUse, setEmailInUse] = useState(false);
 
 	const navigate = useNavigate();
 
@@ -37,13 +38,18 @@ export default function Login(props) {
 		axios
 			.post('/api/devs/signup', signupData)
 			.then(res => {
-				console.log(res);
+				console.log('FRONTEND EMAIL CHECK', res);
+				if (res.data) {
+					setEmailInUse(true);
+					throw console.error('email already in use');
+				}
 			})
 			.then(res => {
 				axios.post('/api/auth/login', loginData).then(res => {
 					setCurrentUser(res.data);
-					console.log(res.data);
-					setMatchPass('okay');
+					console.log('RES FROM LOGIN', res.data);
+					setMatchPass(false);
+					setEmailInUse(false);
 				});
 			})
 			.catch(err => {
@@ -79,13 +85,14 @@ export default function Login(props) {
 						id='last_name'
 						label='Last Name'
 					/>
+					{emailInUse && <p id='email-error'>Email already in use!</p>}
 					<TextField
 						sx={{ mt: '0rem', ml: '10%', mr: '10%' }}
 						id='email'
 						type='email'
 						label='Email'
 					/>
-					{!matchPass && <p id='error'>Passwords must match!</p>}
+					{!matchPass && <p id='password-error'>Passwords must match!</p>}
 					<TextField
 						id='password'
 						sx={{ mt: '1rem', ml: '10%', mr: '10%' }}

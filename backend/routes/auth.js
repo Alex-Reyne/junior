@@ -11,7 +11,7 @@ module.exports = ({ getUserByEmail }) => {
 		getUserByEmail(submittedEmail)
 			.then(dev => {
 				// authenticate
-				if (bcrypt.compareSync(dev.password, submittedPassword)) {
+				if (bcrypt.compareSync(submittedPassword, dev.password)) {
 					res.cookie('email', dev.email);
 					res.json(dev);
 				} else {

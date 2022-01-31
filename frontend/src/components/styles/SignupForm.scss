@@ -22,7 +22,13 @@
 		}
 	}
 
-	#error {
+	#email-error {
+		color: #ff0000af;
+		align-self: center;
+		margin: 0 0 1rem 0;
+	}
+
+	#password-error {
 		color: #ff0000af;
 		align-self: center;
 		margin: 1rem 0 0 0;

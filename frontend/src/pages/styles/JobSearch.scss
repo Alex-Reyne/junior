@@ -1,161 +1,161 @@
 @import 'variables';
 
 .main-content {
-  color: #26242a;
-  display: flex;
-  width: 100%;
-  padding: 0rem 10rem;
-  gap: 5rem;
-  min-height: 90vh;
-  margin-top: 100px;
-  margin-bottom: 100px;
+	color: #26242a;
+	display: flex;
+	width: 100%;
+	padding: 0rem 10rem;
+	gap: 5rem;
+	min-height: 90vh;
+	margin-top: 100px;
+	margin-bottom: 100px;
 }
 
 .jobsearch-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  align-content: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	align-content: center;
 }
 
 .jobsearch-search {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #fbfbfb;
-  padding: 1rem;
-  width: 70%;
-  box-shadow: 0px 3px 8px rgba(8, 35, 48, 0.05);
-  margin-bottom: -80px;
-  gap: 30px;
-  border-radius: 5px;
-  position: absolute;
-  bottom: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #fbfbfb;
+	padding: 1rem;
+	width: 70%;
+	box-shadow: 0px 3px 8px rgba(8, 35, 48, 0.05);
+	margin-bottom: -80px;
+	gap: 30px;
+	border-radius: 5px;
+	position: absolute;
+	bottom: 0;
 }
 
 .jobsearch-search input {
-  font-family: 'Assistant';
-  width: 13rem;
-  border-right: 1px solid #f0f0f0;
-  background: #fbfbfb;
-  padding: 0;
-  height: 40px;
+	font-family: 'Assistant';
+	width: 13rem;
+	border-right: 1px solid #f0f0f0;
+	background: #fbfbfb;
+	padding: 0;
+	height: 40px;
 }
 
 .jobsearch-header-container {
-  max-height: 600px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+	max-height: 600px;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 textarea:focus,
 input:focus {
-  outline: none;
+	outline: none;
 }
 
 .checkboxes {
-  text-align: left;
-  min-width: 250px;
+	text-align: left;
+	min-width: 250px;
 }
 
 .checkboxes svg {
-  color: $blue;
+	color: $blue;
 }
 
 .checkboxes hr {
-  border: 1px solid #f0f0f0;
+	border: 1px solid #f0f0f0;
 }
 
 .checkboxes-section {
-  // border-bottom: 1px solid #c4c4c4;
-  margin: 0;
-  padding: 18px 0px 18px 0px;
-  span {
-    font-size: 15px;
-  }
+	// border-bottom: 1px solid #c4c4c4;
+	margin: 0;
+	padding: 18px 0px 18px 0px;
+	span {
+		font-size: 15px;
+	}
 }
 
 .checkboxes-section-details {
-  border-bottom: 1px solid #c4c4c4;
-  margin: 0;
-  padding: 18px 0px 18px 0px;
+	border-bottom: 1px solid #c4c4c4;
+	margin: 0;
+	padding: 18px 0px 18px 0px;
 }
 
 #recommended-num {
-  color: #aaaaaa;
-  margin-left: 5px;
-  font-weight: 600;
+	color: #aaaaaa;
+	margin-left: 5px;
+	font-weight: 600;
 }
 
 .searchResults-container {
-  margin-top: 18px;
-  & h4 {
-    text-align: left;
-  }
+	margin-top: 18px;
+	& h4 {
+		text-align: left;
+	}
 }
 
 .search-results-img {
-  border-radius: 50%;
-  width: 25% !important;
-  height: 25%;
+	border-radius: 50%;
+	width: 25% !important;
+	height: 25%;
 }
 
 .card-content {
-  margin: 2rem;
+	margin: 2rem;
 }
 
 .cart-text {
-  padding: 1rem 0 1rem 0 !important;
+	padding: 1rem 0 1rem 0 !important;
 }
 
 div .salary-slider {
-  font-family: 'Assistant';
-  color: black;
-  font-size: 13px;
-  font-weight: bold;
-  display: flex;
-  justify-content: space-around;
+	font-family: 'Assistant';
+	color: black;
+	font-size: 13px;
+	font-weight: bold;
+	display: flex;
+	justify-content: space-around;
 
-  & #salary {
-    font-weight: 700;
-  }
+	& #salary {
+		font-weight: 700;
+	}
 
-  & #salary-range {
-    font-weight: 600;
-  }
+	& #salary-range {
+		font-weight: 600;
+	}
 }
 
 .searchResults div,
 .searchResults p {
-  font-family: 'Assistant' !important;
+	font-family: 'Assistant' !important;
 }
 
 .jobsearch-search fieldset {
-  border: none;
+	border: none;
 }
 
 .searchResults {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 1.4rem;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap: 1.4rem;
 }
 
 @media (min-width: 1700px) {
-  .searchResults {
-    grid-template-columns: repeat(4, 1fr);
-  }
+	.searchResults {
+		grid-template-columns: repeat(4, 1fr);
+	}
 }
 
 .jobsearch-img-container {
-  max-height: 300px;
-  img {
-    height: 100%;
-    width: 100%;
-  }
+	max-height: 300px;
+	img {
+		height: 100%;
+		width: 100%;
+	}
 }
 
 .drop_down_box {
-  justify-content: center;
+	justify-content: center;
 }

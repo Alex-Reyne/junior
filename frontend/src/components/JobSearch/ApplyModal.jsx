@@ -32,12 +32,12 @@ const useStyles = makeStyles({
 		'max-width': '118px',
 	},
 
-	apply_modal: {
-		'background-color': '#223d55',
-		color: '#ffffff',
-		display: 'flex',
-		justifyContent: 'center',
-	},
+	// apply_modal: {
+	// 	'background-color': '#223d55',
+	// 	color: '#ffffff',
+	// 	display: 'flex',
+	// 	justifyContent: 'center',
+	// },
 
 	// edit: {
 	// 	color: '#182c5b',
@@ -176,9 +176,17 @@ export default function ApplyModal(props) {
 				open={openModal}
 				onClose={handleView}
 				fullWidth={true}
-				PaperProps={classes.apply_modal}
+				sx={{
+					'& .MuiDialog-paper': {
+						borderRadius: '13px',
+						padding: '2rem',
+						color: '#fff',
+						backgroundColor: '#223d55',
+					},
+				}}
+				// PaperProps={classes.apply_modal}
 				maxWidth={applicationSubmitted ? 'sm' : 'md'}
-				className={classes.dialog}
+				// className={classes.dialog}
 			>
 				{/* <Box
 					className={classes.apply_modal}

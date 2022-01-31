@@ -22,6 +22,12 @@
 		}
 	}
 
+	#invalid-cred {
+		color: #ff0000af;
+		align-self: center;
+		margin: 0 0 1rem 0;
+	}
+
 	.login {
 		display: flex;
 		flex-direction: column;

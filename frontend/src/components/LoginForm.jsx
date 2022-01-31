@@ -1,13 +1,14 @@
 import './styles/LoginForm.scss';
 import { TextField, Button } from '@mui/material';
 import axios from 'axios';
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../Providers/userProvider';
 
 export default function Login(props) {
 	const { handleLoginView, handleSignupView } = props;
 	const { currentUser, setCurrentUser } = useContext(UserContext);
+	const [invalidCred, setInvalidCred] = useState(false);
 
 	const navigate = useNavigate();
 
@@ -22,8 +23,12 @@ export default function Login(props) {
 		axios
 			.post('/api/auth/login', data)
 			.then(res => {
+				if (!res.data) {
+					setInvalidCred(true);
+					return;
+				}
+				setInvalidCred(false);
 				setCurrentUser(res.data);
-				console.log(res.data);
 			})
 			.catch(err => {
 				console.log(err);
@@ -48,6 +53,7 @@ export default function Login(props) {
 						Log in now to get started building your portolfio and launch your
 						career
 					</h2>
+					{invalidCred && <p id='invalid-cred'>Email or Password incorrect!</p>}
 					<TextField
 						sx={{ mt: '0rem', ml: '10%', mr: '10%' }}
 						id='email'

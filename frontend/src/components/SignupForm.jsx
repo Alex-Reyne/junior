@@ -5,10 +5,11 @@ import { useEffect, useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../Providers/userProvider';
 
-export default function Login(props) {
+export default function SignupForm(props) {
 	const { handleSignupView, handleLoginView } = props;
 	const { currentUser, setCurrentUser } = useContext(UserContext);
 	const [matchPass, setMatchPass] = useState(true);
+	const [shortPass, setShortPass] = useState(true);
 	const [emailInUse, setEmailInUse] = useState(false);
 
 	const navigate = useNavigate();
@@ -21,6 +22,11 @@ export default function Login(props) {
 			document.getElementById('confirm-password').value
 		) {
 			setMatchPass(false);
+			return;
+		}
+
+		if (document.getElementById('password').value.length < 8) {
+			setShortPass(true);
 			return;
 		}
 
@@ -93,6 +99,11 @@ export default function Login(props) {
 						label='Email'
 					/>
 					{!matchPass && <p id='password-error'>Passwords must match!</p>}
+					{shortPass && (
+						<p id='password-error'>
+							Passwords must be at least 8 characters long!
+						</p>
+					)}
 					<TextField
 						id='password'
 						sx={{ mt: '1rem', ml: '10%', mr: '10%' }}

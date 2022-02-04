@@ -11,11 +11,15 @@ export default function SignupForm(props) {
 	const [matchPass, setMatchPass] = useState(true);
 	const [shortPass, setShortPass] = useState(true);
 	const [emailInUse, setEmailInUse] = useState(false);
+	const [userType, setUserType] = useState('developer');
 
 	const navigate = useNavigate();
 
 	const signup = e => {
 		e.preventDefault();
+
+		setMatchPass(true);
+		setShortPass(true);
 
 		if (
 			document.getElementById('password').value !==
@@ -26,7 +30,7 @@ export default function SignupForm(props) {
 		}
 
 		if (document.getElementById('password').value.length < 8) {
-			setShortPass(true);
+			setShortPass(false);
 			return;
 		}
 
@@ -34,33 +38,66 @@ export default function SignupForm(props) {
 			email: document.getElementById('email').value,
 			password: document.getElementById('password').value,
 		};
-		const signupData = {
+
+		const devSignupData = {
 			first_name: document.getElementById('first_name').value,
 			last_name: document.getElementById('last_name').value,
 			email: document.getElementById('email').value,
 			password: document.getElementById('password').value,
 		};
 
-		axios
-			.post('/api/devs/signup', signupData)
-			.then(res => {
-				console.log('FRONTEND EMAIL CHECK', res);
-				if (res.data) {
-					setEmailInUse(true);
-					throw console.error('email already in use');
-				}
-			})
-			.then(res => {
-				axios.post('/api/auth/login', loginData).then(res => {
-					setCurrentUser(res.data);
-					console.log('RES FROM LOGIN', res.data);
-					setMatchPass(false);
-					setEmailInUse(false);
+		const employerSignupData = {
+			first_name: document.getElementById('first_name').value,
+			last_name: document.getElementById('last_name').value,
+			email: document.getElementById('email').value,
+			password: document.getElementById('password').value,
+		};
+
+		if (userType === 'developer') {
+			axios
+				.post('/api/devs/signup', devSignupData)
+				.then(res => {
+					console.log('FRONTEND EMAIL CHECK', res);
+					if (res.data) {
+						setEmailInUse(true);
+						throw console.error('email already in use');
+					}
+				})
+				.then(res => {
+					axios.post('/api/auth/login', loginData).then(res => {
+						setCurrentUser(res.data);
+						console.log('RES FROM LOGIN', res.data);
+						setMatchPass(false);
+						setEmailInUse(false);
+					});
+				})
+				.catch(err => {
+					console.log(err);
 				});
-			})
-			.catch(err => {
-				console.log(err);
-			});
+		}
+
+		if (userType === 'employer') {
+			axios
+				.post('/api/employers/signup', employerSignupData)
+				.then(res => {
+					console.log('FRONTEND EMAIL CHECK', res);
+					if (res.data) {
+						setEmailInUse(true);
+						throw console.error('email already in use');
+					}
+				})
+				.then(res => {
+					axios.post('/api/auth/login', loginData).then(res => {
+						setCurrentUser(res.data);
+						console.log('RES FROM LOGIN', res.data);
+						setMatchPass(false);
+						setEmailInUse(false);
+					});
+				})
+				.catch(err => {
+					console.log(err);
+				});
+		}
 	};
 
 	useEffect(() => {
@@ -77,20 +114,57 @@ export default function SignupForm(props) {
 			<div id='signup-box'>
 				<form className='signup' onSubmit={signup}>
 					<h1>Sign up for a new account</h1>
-					<h2>
-						Sign up now to get started building your portolfio and launch your
-						career
-					</h2>
-					<TextField
-						sx={{ mb: '1rem', ml: '10%', mr: '10%' }}
-						id='first_name'
-						label='First Name'
-					/>
-					<TextField
-						sx={{ mb: '1rem', ml: '10%', mr: '10%' }}
-						id='last_name'
-						label='Last Name'
-					/>
+					{userType === 'developer' && (
+						<>
+							<h2>
+								Sign up now to get started building your portolfio and launch
+								your career
+							</h2>
+							<a
+								className='switch-signup'
+								onClick={e => {
+									setUserType('employer');
+									setMatchPass(true);
+									setShortPass(true);
+								}}
+							>
+								Sign up as an employer instead.
+							</a>
+							<TextField
+								sx={{ mb: '1rem', ml: '10%', mr: '10%' }}
+								id='first_name'
+								label='First Name'
+							/>
+							<TextField
+								sx={{ mb: '1rem', ml: '10%', mr: '10%' }}
+								id='last_name'
+								label='Last Name'
+							/>
+						</>
+					)}
+					{userType === 'employer' && (
+						<>
+							<h2>
+								Sign up now to find awesome entry level and junior developers
+								for hire or to work on freelance projects.
+							</h2>
+							<a
+								className='switch-signup'
+								onClick={e => {
+									setUserType('developer');
+									setMatchPass(true);
+									setShortPass(true);
+								}}
+							>
+								Sign up as a developer instead.
+							</a>
+							<TextField
+								sx={{ mb: '1rem', ml: '10%', mr: '10%' }}
+								id='company_name'
+								label='Company Name'
+							/>
+						</>
+					)}
 					{emailInUse && <p id='email-error'>Email already in use!</p>}
 					<TextField
 						sx={{ mt: '0rem', ml: '10%', mr: '10%' }}
@@ -99,7 +173,7 @@ export default function SignupForm(props) {
 						label='Email'
 					/>
 					{!matchPass && <p id='password-error'>Passwords must match!</p>}
-					{shortPass && (
+					{!shortPass && (
 						<p id='password-error'>
 							Passwords must be at least 8 characters long!
 						</p>

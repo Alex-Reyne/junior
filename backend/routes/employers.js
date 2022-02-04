@@ -9,6 +9,8 @@ module.exports = ({
 	getAllJobApplicationsForEmployer,
 	getAllGigApplicationsForEmployer,
 	editEmployerProfile,
+	getUserByEmail,
+	employerSignup,
 }) => {
 	/* GET all employers */
 	router.get('/', (req, res) => {
@@ -81,6 +83,25 @@ module.exports = ({
 					error: err.message,
 				})
 			);
+	});
+
+	router.post('/signup', (req, res) => {
+		getUserByEmail(req.body.email)
+			.then(check => {
+				console.log('EMAIL CHECK', check || null);
+				if (check) {
+					return res.json(true);
+				} else {
+					employerSignup(req.body)
+						.then(profile => res.json(profile))
+						.catch(err =>
+							res.json({
+								error: err.message,
+							})
+						);
+				}
+			})
+			.catch(err => console.log(err));
 	});
 
 	return router;

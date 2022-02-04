@@ -1,3 +1,5 @@
+const bcrypt = require('bcryptjs');
+
 // DB queries for EMPLOYERS //
 
 module.exports = db => {
@@ -21,6 +23,31 @@ module.exports = db => {
 		return db
 			.query(query)
 			.then(result => result.rows[0])
+			.catch(err => err);
+	};
+
+	const getUserByEmail = email => {
+		const q1 = {
+			text: `SELECT * FROM junior_devs WHERE email = $1`,
+			values: [email],
+		};
+
+		const q2 = {
+			text: `SELECT * FROM employers WHERE email = $1`,
+			values: [email],
+		};
+
+		return db
+			.query(q1)
+			.then(result1 => {
+				const junior_dev = result1.rows[0];
+				console.log(junior_dev);
+				return db.query(q2).then(result2 => {
+					const employer = result2.rows[0];
+					console.log(employer);
+					return junior_dev || employer;
+				});
+			})
 			.catch(err => err);
 	};
 
@@ -157,6 +184,25 @@ module.exports = db => {
 			.catch(err => err);
 	};
 
+	const employerSignup = function (employer) {
+		const query = {
+			text: `
+  			INSERT into employers (company_name, email, password)
+  			VALUES ($1, $2, $3)
+  			RETURNING *
+  		`,
+			values: [
+				employer.company_name,
+				employer.email,
+				bcrypt.hashSync(employer.password, 10),
+			],
+		};
+		return db
+			.query(query)
+			.then(res => console.log(res))
+			.catch(err => err);
+	};
+
 	return {
 		getEmployers,
 		getEmployerById,
@@ -165,5 +211,7 @@ module.exports = db => {
 		getAllJobApplicationsForEmployer,
 		getAllGigApplicationsForEmployer,
 		editEmployerProfile,
+		getUserByEmail,
+		employerSignup,
 	};
 };

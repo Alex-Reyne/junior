@@ -22,6 +22,8 @@ export default function UserProfileHeader(props) {
 
 	const { email, company_name, bio, id } = currentUser;
 
+	console.log(company_name, bio);
+
 	const { employer } = props;
 
 	const updateProfile = () => {

@@ -39,21 +39,14 @@ export default function SignupForm(props) {
 			password: document.getElementById('password').value,
 		};
 
-		const devSignupData = {
-			first_name: document.getElementById('first_name').value,
-			last_name: document.getElementById('last_name').value,
-			email: document.getElementById('email').value,
-			password: document.getElementById('password').value,
-		};
-
-		const employerSignupData = {
-			first_name: document.getElementById('first_name').value,
-			last_name: document.getElementById('last_name').value,
-			email: document.getElementById('email').value,
-			password: document.getElementById('password').value,
-		};
-
 		if (userType === 'developer') {
+			const devSignupData = {
+				first_name: document.getElementById('first_name').value,
+				last_name: document.getElementById('last_name').value,
+				email: document.getElementById('email').value,
+				password: document.getElementById('password').value,
+			};
+
 			axios
 				.post('/api/devs/signup', devSignupData)
 				.then(res => {
@@ -77,6 +70,12 @@ export default function SignupForm(props) {
 		}
 
 		if (userType === 'employer') {
+			const employerSignupData = {
+				company_name: document.getElementById('company_name').value,
+				email: document.getElementById('email').value,
+				password: document.getElementById('password').value,
+			};
+
 			axios
 				.post('/api/employers/signup', employerSignupData)
 				.then(res => {

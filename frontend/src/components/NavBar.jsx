@@ -8,7 +8,7 @@ import UserMenu from '../components/UserMenu';
 import axios from 'axios';
 
 export default function NavBar(props) {
-	const { handleLoginView, handleSignupView, setUserType, userType } = props;
+	const { handleLoginView, handleSignupView, setUserType } = props;
 	const { currentUser, setCurrentUser } = useContext(UserContext);
 
 	const location = useLocation();

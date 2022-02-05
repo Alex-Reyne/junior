@@ -46,6 +46,8 @@ export default function UserProjects(props) {
 			<PortfolioModal
 				key={'Project-modal-' + project.project_id}
 				{...project}
+				openModal={openModal}
+				setOpenModal={setOpenModal}
 			/>
 		);
 

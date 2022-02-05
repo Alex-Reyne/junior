@@ -11,6 +11,7 @@ export default function Profile(props) {
 		github_link,
 		live_link,
 		project_id,
+		setOpenModal,
 	} = props;
 	console.log(project_id);
 
@@ -23,7 +24,7 @@ export default function Profile(props) {
 		axios
 			.post(`/api/projects/delete/${project_id}`)
 			.then(res => {
-				console.log(res);
+				setOpenModal(false);
 			})
 			.catch(err => console.log(err));
 	};

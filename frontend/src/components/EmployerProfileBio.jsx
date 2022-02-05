@@ -95,7 +95,11 @@ export default function UserProfileHeader(props) {
 						sx={{ justifyContent: 'space-evenly' }}
 					>
 						<Chip label='Save' onClick={e => editProfile()} />
-						<Chip label='Cancel' onClick={e => setProfileView('browse')} />
+						<Chip
+							label='Cancel'
+							sx={{ ml: '1rem' }}
+							onClick={e => setProfileView('browse')}
+						/>
 					</Grid>
 				</form>
 			)}

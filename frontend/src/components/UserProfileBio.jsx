@@ -83,7 +83,7 @@ export default function UserProfileHeader(props) {
 						></TextField>
 						<TextField
 							size='small'
-							sx={{ mt: '2vh', mb: '2vh', minWidth: '12vw' }}
+							sx={{ mt: '2vh', minWidth: '12vw' }}
 							label='LinkedIn'
 							value={editForm.linkedin_url}
 							onChange={e =>
@@ -106,7 +106,11 @@ export default function UserProfileHeader(props) {
 						sx={{ justifyContent: 'space-evenly' }}
 					>
 						<Chip label='Save' onClick={e => editProfile()} />
-						<Chip label='Cancel' onClick={e => setProfileView('browse')} />
+						<Chip
+							label='Cancel'
+							sx={{ ml: '1rem' }}
+							onClick={e => setProfileView('browse')}
+						/>
 					</Grid>
 				</form>
 			)}

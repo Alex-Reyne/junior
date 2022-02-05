@@ -15,7 +15,6 @@ module.exports = ({ getUserByEmail }) => {
 				if (submittedPassword.length <= 3) {
 					if (dev.password === submittedPassword) {
 						req.session.user = dev;
-						res.cookie('email', dev.email);
 						res.json(dev);
 					} else {
 						res.json(false);
@@ -38,7 +37,7 @@ module.exports = ({ getUserByEmail }) => {
 
 	router.post('/check', (req, res) => {
 		// get email from cookie
-		const email = req.cookies.email;
+		const email = req.session.user.email;
 
 		getUserByEmail(email)
 			.then(dev => {

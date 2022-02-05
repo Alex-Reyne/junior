@@ -216,8 +216,9 @@ module.exports = db => {
 				github_url = $5,
 				linkedin_url = $6,
 				resume_url = $7,
-				city = $8
-				WHERE id = $9
+				city = $8,
+				photo_url = $9
+				WHERE id = $10
 				RETURNING *
 				`,
 			values: [
@@ -229,6 +230,7 @@ module.exports = db => {
 				params.linkedin_url,
 				params.resume_url,
 				params.city,
+				params.photo_url,
 				params.id,
 			],
 		};

@@ -167,11 +167,18 @@ module.exports = db => {
 			text: `UPDATE employers
 				SET email = $1,
 				company_name = $2,
-				bio = $3
-				WHERE id = $4
+				bio = $3,
+				photo_url = $4
+				WHERE id = $5
 				RETURNING *
 				`,
-			values: [params.email, params.company_name, params.bio, params.id],
+			values: [
+				params.email,
+				params.company_name,
+				params.bio,
+				params.photo_url,
+				params.id,
+			],
 		};
 		return db
 			.query(query)

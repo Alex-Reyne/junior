@@ -1,11 +1,32 @@
 import './styles/PortfolioCard.scss';
 import { Button, CardActions, CardContent, CardMedia } from '@mui/material';
+import { useState } from 'react';
+import axios from 'axios';
 
 export default function Profile(props) {
-	const { title, description, thumbnail_photo_url, github_link, live_link } =
-		props;
+	const {
+		title,
+		description,
+		thumbnail_photo_url,
+		github_link,
+		live_link,
+		project_id,
+	} = props;
+	console.log(project_id);
+
+	const [deleteWarning, setDeleteWarning] = useState(false);
+
 	const imgUrl =
 		'https://cdn.dribbble.com/users/409537/screenshots/14290034/media/965f91e1549a177acd63b8dced7592fa.png?compress=1&resize=1200x900&vertical=top';
+
+	const deleteProject = () => {
+		axios
+			.post(`/api/projects/delete/${project_id}`)
+			.then(res => {
+				console.log(res);
+			})
+			.catch(err => console.log(err));
+	};
 
 	return (
 		<>
@@ -18,7 +39,7 @@ export default function Profile(props) {
 			<p className='description'>
 				{description ? description : 'No description'}
 			</p>
-			<CardActions sx={{justifyContent: 'space-between'}}>
+			<CardActions sx={{ justifyContent: 'space-between' }}>
 				<Button
 					variant='contained'
 					color='primary'
@@ -39,6 +60,43 @@ export default function Profile(props) {
 				>
 					Live Link
 				</Button>
+				{deleteWarning && (
+					<>
+						<div className='delete-warning'>
+							<p>are you sure?</p>
+							<div>
+								<Button
+									variant='outlined'
+									color='primary'
+									className='modal-button'
+									onClick={deleteProject}
+								>
+									Yes
+								</Button>
+								<Button
+									variant='outlined'
+									color='primary'
+									className='modal-button'
+									onClick={e => setDeleteWarning(false)}
+								>
+									No
+								</Button>
+							</div>
+						</div>
+					</>
+				)}
+				{!deleteWarning && (
+					<>
+						<Button
+							variant='outlined'
+							color='primary'
+							className='modal-button'
+							onClick={e => setDeleteWarning(true)}
+						>
+							Delete
+						</Button>
+					</>
+				)}
 			</CardActions>
 		</>
 	);

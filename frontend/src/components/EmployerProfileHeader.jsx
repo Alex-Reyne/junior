@@ -63,7 +63,7 @@ export default function UserProfileHeader(props) {
 				alt='Avatar'
 			></img>
 			<img id='portfolio-profile-pic' src={photo_url} alt='Avatar'></img>
-			<Grid container direction='row' className='profile-header'>
+			<Grid container direction='row' className='employer-profile-header'>
 				<Grid item container direction='column'>
 					<Grid item container>
 						<Grid

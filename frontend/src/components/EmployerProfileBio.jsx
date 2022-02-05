@@ -74,10 +74,19 @@ export default function UserProfileHeader(props) {
 							size='small'
 							multiline={true}
 							maxRows={3}
-							sx={{ mt: '2vh', mb: '2vh', minWidth: '12vw' }}
+							sx={{ mt: '2vh', minWidth: '12vw' }}
 							label='About'
 							value={editForm.bio}
 							onChange={e => setEditForm({ ...editForm, bio: e.target.value })}
+						></TextField>
+						<TextField
+							size='small'
+							sx={{ mt: '2vh', mb: '2vh', minWidth: '12vw' }}
+							label='Profile Pic URL'
+							value={editForm.photo_url}
+							onChange={e =>
+								setEditForm({ ...editForm, photo_url: e.target.value })
+							}
 						></TextField>
 					</Grid>
 					<Grid

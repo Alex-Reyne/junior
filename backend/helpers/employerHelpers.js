@@ -171,12 +171,7 @@ module.exports = db => {
 				WHERE id = $4
 				RETURNING *
 				`,
-			values: [
-				params.email,
-				params.company_name,
-				params.bio,
-				params.employer_id,
-			],
+			values: [params.email, params.company_name, params.bio, params.id],
 		};
 		return db
 			.query(query)

@@ -16,13 +16,13 @@ export default function UserProfileHeader(props) {
 		...currentUser,
 	});
 
+	console.log('EDIT FORM', editForm);
+
 	useEffect(() => {
 		setEditForm(prev => ({ ...prev, ...currentUser }));
 	}, [currentUser]);
 
 	const { email, company_name, bio, id } = currentUser;
-
-	console.log(company_name, bio);
 
 	const { employer } = props;
 
@@ -54,7 +54,7 @@ export default function UserProfileHeader(props) {
 							size='small'
 							multiline={true}
 							maxRows={3}
-							sx={{ mt: '2vh', minWidth: '12vw' }}
+							sx={{ minWidth: '12vw' }}
 							label='Company Name'
 							value={editForm.company_name}
 							onChange={e =>
@@ -72,16 +72,13 @@ export default function UserProfileHeader(props) {
 						></TextField>
 						<TextField
 							size='small'
-							sx={{ mt: '2vh', minWidth: '12vw' }}
-							label='Description'
-							value={editForm.Bio}
+							multiline={true}
+							maxRows={3}
+							sx={{ mt: '2vh', mb: '2vh', minWidth: '12vw' }}
+							label='About'
+							value={editForm.bio}
 							onChange={e => setEditForm({ ...editForm, bio: e.target.value })}
 						></TextField>
-					</Grid>
-					<Grid item className='profile-links'>
-						<h4>Email: {email}</h4>
-						<h4>Job Postings: {profile.jobs.length}</h4>
-						<h4>Gig Postings: {profile.gigs.length}</h4>
 					</Grid>
 					<Grid
 						item

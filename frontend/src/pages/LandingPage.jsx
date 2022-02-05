@@ -7,7 +7,14 @@ import { UserContext } from '../Providers/userProvider';
 import Button from '@mui/material/Button';
 
 export default function LandingPage(props) {
-	const { loginView, handleLoginView, signupView, handleSignupView } = props;
+	const {
+		loginView,
+		handleLoginView,
+		signupView,
+		handleSignupView,
+		userType,
+		setUserType,
+	} = props;
 	const { currentUser, setCurrentUser } = useContext(UserContext);
 
 	const searchView = () => {
@@ -44,6 +51,8 @@ export default function LandingPage(props) {
 				<SignupForm
 					handleSignupView={handleSignupView}
 					handleLoginView={handleLoginView}
+					userType={userType}
+					setUserType={setUserType}
 				/>
 			)}
 			{!loginView && !signupView && searchView()}

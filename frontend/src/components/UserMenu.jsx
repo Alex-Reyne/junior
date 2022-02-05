@@ -41,7 +41,12 @@ export default function PositionedMenu(props) {
 		<div className='user-menu-container'>
 			<div className='profile-info'>
 				<span className='name'>
-					{currentUser.first_name} {currentUser.last_name}
+					{currentUser.first_name && (
+						<>
+							{currentUser.first_name} {currentUser.last_name}
+						</>
+					)}
+					{currentUser.company_name && <>{currentUser.company_name}</>}
 				</span>
 				<Button
 					sx={{ mr: '8rem', borderRadius: 50 }}

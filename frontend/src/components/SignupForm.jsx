@@ -6,12 +6,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../Providers/userProvider';
 
 export default function SignupForm(props) {
-	const { handleSignupView, handleLoginView } = props;
+	const { handleSignupView, handleLoginView, userType, setUserType } = props;
 	const { currentUser, setCurrentUser } = useContext(UserContext);
 	const [matchPass, setMatchPass] = useState(true);
 	const [shortPass, setShortPass] = useState(true);
 	const [emailInUse, setEmailInUse] = useState(false);
-	const [userType, setUserType] = useState('developer');
 
 	const navigate = useNavigate();
 

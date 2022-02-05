@@ -8,7 +8,7 @@ import UserMenu from '../components/UserMenu';
 import axios from 'axios';
 
 export default function NavBar(props) {
-	const { handleLoginView, handleSignupView } = props;
+	const { handleLoginView, handleSignupView, setUserType, userType } = props;
 	const { currentUser, setCurrentUser } = useContext(UserContext);
 
 	const location = useLocation();
@@ -29,10 +29,6 @@ export default function NavBar(props) {
 	return (
 		<div className={navClassCheck()}>
 			<Link id='logo' to='/'>
-				{/* <img
-          src="/images/Screen_Shot_2022-01-24_at_3.31.14_PM__2_-removebg-preview.png"
-          id="logo-img"
-        /> */}
 				<h1 id='logo-text'>{logoText}</h1>
 			</Link>
 			<div className='nav-links'>
@@ -41,8 +37,15 @@ export default function NavBar(props) {
 				</Link>
 				<Link to={location.pathname}>How it works</Link>
 				<Link to={location.pathname}>Company</Link>
-				{currentUser.company_name && (
-					<Link id='hire-talent' to={location.pathname}>
+				{!currentUser && (
+					<Link
+						id='hire-talent'
+						to='/'
+						onClick={e => {
+							handleSignupView();
+							setUserType('employer');
+						}}
+					>
 						Hire Talent
 					</Link>
 				)}

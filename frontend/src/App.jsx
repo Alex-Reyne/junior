@@ -29,6 +29,7 @@ function App() {
 	const { currentUser } = useContext(UserContext);
 	const [loginView, setLoginView] = useState(false);
 	const [signupView, setSignupView] = useState(false);
+	const [userType, setUserType] = useState('developer');
 	let navigate = useNavigate();
 
 	const handleLoginView = e => {
@@ -58,6 +59,8 @@ function App() {
 			<NavBar
 				handleLoginView={handleLoginView}
 				handleSignupView={handleSignupView}
+				userType={userType}
+				setUserType={setUserType}
 			/>
 			<Routes>
 				<Route
@@ -68,6 +71,8 @@ function App() {
 							handleLoginView={handleLoginView}
 							signupView={signupView}
 							handleSignupView={handleSignupView}
+							userType={userType}
+							setUserType={setUserType}
 						/>
 					}
 				/>

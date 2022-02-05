@@ -51,7 +51,7 @@ module.exports = ({ getUserByEmail }) => {
 	});
 
 	router.post('/logout', (req, res) => {
-		res.clearCookie('email');
+		req.session.destroy();
 		res.send({});
 	});
 

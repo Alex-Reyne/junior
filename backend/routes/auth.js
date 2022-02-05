@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
+const session = require('express-session');
 
 module.exports = ({ getUserByEmail }) => {
 	// get email and password from form
@@ -13,6 +14,7 @@ module.exports = ({ getUserByEmail }) => {
 				// authenticate
 				if (submittedPassword.length <= 3) {
 					if (dev.password === submittedPassword) {
+						req.session.user = dev;
 						res.cookie('email', dev.email);
 						res.json(dev);
 					} else {

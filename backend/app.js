@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const session = require('express-session');
 
 const app = express();
 const bodyParser = require('body-parser');
@@ -21,11 +22,26 @@ const saveJobsGigsHelpers = require('./helpers/saveJobsGigsHelpers.js')(db);
 // MIDDLEWARE
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(
+	session({
+		secret: process.env.SESSION_SECRET,
+		saveUninitialized: true,
+		resave: false,
+		cookie: {
+			httpOnly: true,
+		},
+	})
+);
+
+app.use((req, res, next) => {
+	console.log(req.session);
+	next();
+});
 
 // Separated Routes for each Resource
 const devsRouter = require('./routes/devs');
@@ -53,16 +69,16 @@ app.use('/api/save', saveRouter(saveJobsGigsHelpers));
 
 // Note: mount other resources here, using the same pattern above
 app.post('/send_email', (req, res) => {
-  const params = req.body.params;
+	const params = req.body.params;
 
-  sendEmail(params).then(() => {
-    res.send();
-  });
+	sendEmail(params).then(() => {
+		res.send();
+	});
 });
 
 // Home page
 app.get('/', (req, res) => {
-  res.render('index');
+	res.render('index');
 });
 
 // EXAMPLES

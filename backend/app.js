@@ -28,11 +28,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const env = process.env.NODE_ENV || 'development';
-
 app.use(
 	session({
-		secret: env.SESSION_SECRET,
+		secret: process.env.SESSION_SECRET,
 		saveUninitialized: true,
 		resave: false,
 		cookie: {

@@ -67,7 +67,7 @@ export default function Profile(props) {
 							<p>are you sure?</p>
 							<div>
 								<Button
-									variant='outlined'
+									variant='contained'
 									color='primary'
 									className='modal-button'
 									onClick={deleteProject}
@@ -75,7 +75,7 @@ export default function Profile(props) {
 									Yes
 								</Button>
 								<Button
-									variant='outlined'
+									variant='contained'
 									color='primary'
 									className='modal-button'
 									onClick={e => setDeleteWarning(false)}
@@ -89,7 +89,7 @@ export default function Profile(props) {
 				{!deleteWarning && (
 					<>
 						<Button
-							variant='outlined'
+							variant='contained'
 							color='primary'
 							className='modal-button'
 							onClick={e => setDeleteWarning(true)}

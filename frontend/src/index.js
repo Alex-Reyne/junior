@@ -6,6 +6,12 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { UserProvider } from './Providers/userProvider';
 
+import axios from 'axios';
+
+if (process.env.REACT_APP_API_BASE_URL) {
+	axios.defaults.baseURL = process.env.REACT_APP_API_BASE_URL;
+}
+
 ReactDOM.render(
 	<React.StrictMode>
 		<UserProvider>

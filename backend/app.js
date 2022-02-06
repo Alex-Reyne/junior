@@ -30,7 +30,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(
 	session({
-		secret: process.env.SESSION_SECRET,
+		secret: 'testthisshit',
 		saveUninitialized: true,
 		resave: false,
 		cookie: {

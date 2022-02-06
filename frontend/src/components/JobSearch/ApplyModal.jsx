@@ -105,11 +105,12 @@ export default function ApplyModal(props) {
 					return res.data;
 				})
 				.then(data => {
-					sendEmail(
-						'creativereyne@gmail.com',
-						currentUser,
-						jobApplying.job_title
-					);
+					axios
+						.get(`/api/gig_applications/${data.id}`)
+						.then(res => {
+							sendEmail(res.employer_email, currentUser, jobApplying.job_title);
+						})
+						.catch(err => console.log(err));
 				})
 				.catch(err => {
 					console.log(err);
@@ -126,11 +127,12 @@ export default function ApplyModal(props) {
 					return res.data;
 				})
 				.then(data => {
-					sendEmail(
-						'creativereyne@gmail.com',
-						currentUser,
-						jobApplying.job_title
-					);
+					axios
+						.get(`/api/job_applications/${data.id}`)
+						.then(res => {
+							sendEmail(res.employer_email, currentUser, jobApplying.job_title);
+						})
+						.catch(err => console.log(err));
 				})
 				.catch(err => {
 					console.log(err);
@@ -146,7 +148,7 @@ export default function ApplyModal(props) {
 					from: 'applyjuniorstacks@gmail.com', // Use the email address or domain you verified
 					subject: `${job_title}: New Application From ${currentUser.first_name} ${currentUser.last_name}`,
 					text: `You've got a new application on Junior!`,
-					html: `<h1>You've got a new application on <a href='http://localhost:3000/'>Junior!</a><h1>`,
+					html: `<h1>You've got a new application on <a href='https://junior-client.herokuapp.com/'>Junior!</a><h1>`,
 				},
 			})
 			.then(res => {

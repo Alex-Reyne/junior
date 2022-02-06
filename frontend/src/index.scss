@@ -90,6 +90,56 @@ body {
 	}
 }
 
+.content-container,
+.gig-content {
+	.MuiButton-containedPrimary {
+		background-color: $blue;
+		color: $white;
+	}
+	.MuiButton-root:hover {
+		background-color: $lightblue;
+	}
+}
+
+.jobsearch-content,
+.jobsearch-search {
+	.MuiCard-root {
+		align-content: flex-start;
+		margin: 0rem;
+		border-radius: 13px;
+		box-shadow: 3px 3px 10px #00000025;
+	}
+	.MuiButton-root {
+		text-transform: none;
+		padding-right: 1rem;
+		padding-left: 1rem;
+	}
+	.MuiButton-containedPrimary {
+		background-color: $blue;
+		color: $white;
+	}
+	.MuiButton-root:hover {
+		background-color: $lightblue;
+	}
+	.MuiButton-containedPrimary {
+		background-color: $blue;
+	}
+	.MuiButton-outlinedPrimary {
+		background-color: $white;
+		color: $blue;
+		border: 1px solid $blue;
+	}
+
+	.MuiButton-outlined:hover {
+		background-color: $white;
+		color: $lightblue;
+		border: 1px solid $lightblue;
+	}
+	.MuiCard-root {
+		align-content: flex-start;
+	}
+}
+
 .profile-content,
 .application-content,
 .posting-content,

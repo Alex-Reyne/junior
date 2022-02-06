@@ -334,7 +334,7 @@ export default function JobSearch(props) {
 					/>
 					<div className={classes.form_actions}>
 						<Button
-							variant='text'
+							variant='outlined'
 							size='large'
 							className={classes.clear_btn}
 							onClick={clearFields}
@@ -342,7 +342,7 @@ export default function JobSearch(props) {
 							Clear
 						</Button>
 						<Button
-							variant='outlined'
+							variant='contained'
 							size='large'
 							type='submit'
 							className={classes.search_btn}

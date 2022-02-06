@@ -94,7 +94,6 @@ export default function ApplyModal(props) {
 	};
 
 	const submitApplication = () => {
-		console.log(jobApplying.gig_posting_id);
 		if (jobApplying.gig_posting_id) {
 			axios
 				.post('/api/gig_applications/new', {
@@ -102,7 +101,6 @@ export default function ApplyModal(props) {
 					junior_dev_id: currentUser.id,
 				})
 				.then(res => {
-					console.log(res.data);
 					setApplicationSubmitted(true);
 					return res.data;
 				})
@@ -124,7 +122,6 @@ export default function ApplyModal(props) {
 					junior_dev_id: currentUser.id,
 				})
 				.then(res => {
-					console.log(res.data);
 					setApplicationSubmitted(true);
 					return res.data;
 				})

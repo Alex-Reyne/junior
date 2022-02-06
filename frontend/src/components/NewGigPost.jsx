@@ -33,7 +33,6 @@ export default function NewGigPost(props) {
 		axios
 			.post('/api/gig_postings/new', gigForm)
 			.then(res => {
-				console.log(res.data);
 				setGigForm({
 					employer_id: currentUser.id,
 					job_title: '',

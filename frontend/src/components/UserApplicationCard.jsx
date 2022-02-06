@@ -82,7 +82,6 @@ export default function ApplicationCard(props) {
 		return axios
 			.post(`../api/gig_applications/complete/${gig_posting_id}`)
 			.then(res => {
-				console.log(res.data);
 				setApplicationChange(false);
 			})
 			.catch(err => console.log(err));
@@ -111,12 +110,10 @@ export default function ApplicationCard(props) {
 
 	const deleteApplication = id => {
 		const type = job_posting_id ? 'job_applications' : 'gig_applications';
-		console.log('delete', type, id);
+
 		axios
 			.post(`/api/${type}/delete`, { id })
 			.then(res => {
-				console.log('done');
-				console.log('applications: ', applications);
 				setApplicationChange(false);
 			})
 			.catch(err => console.log(err));
@@ -211,7 +208,6 @@ export default function ApplicationCard(props) {
 									color='primary'
 									onClick={() => {
 										markComplete();
-										console.log('complete ', postingLink);
 									}}
 								>
 									Mark Completed
@@ -223,7 +219,6 @@ export default function ApplicationCard(props) {
 									color='primary'
 									onClick={e => {
 										createProject();
-										console.log('CreateProj ', job_title, description);
 									}}
 								>
 									Create Project

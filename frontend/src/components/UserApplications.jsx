@@ -18,14 +18,12 @@ import axios from 'axios';
 import { UserContext } from '../Providers/userProvider';
 
 export default function UserApplications(props) {
-	// const { first_name, last_name, id } = props.currentUser;
 	const { currentUser, setProfileView } = useContext(UserContext);
 	const { id } = currentUser;
 
 	const { projectForm, setProjectForm, openModal, setOpenModal, setModalData } =
 		props;
-	// console.log(currentUser);
-	// const id =  1;
+
 	const [applications, setApplications] = useState({
 		jobApplications: [],
 		gigApplications: [],

@@ -13,7 +13,6 @@ export default function Applications(props) {
 	const { postType, postId } = props.applications;
 	const { profileView, setProfileView } = props;
 
-	console.log(`type ${postType}, id ${postId}`);
 	const [posting, setPosting] = useState({
 		posting: {},
 		applications: [''],

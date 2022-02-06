@@ -9,9 +9,7 @@ import axios from 'axios';
 import { UserContext } from '../Providers/userProvider';
 
 export default function UserAcceptedGigs(props) {
-	// const { first_name, last_name, id } = props.currentUser;
 	const { currentUser } = useContext(UserContext);
-	// console.log(currentUser);
 	const id = 1;
 	const [applications, setApplications] = useState({
 		accepted: [],

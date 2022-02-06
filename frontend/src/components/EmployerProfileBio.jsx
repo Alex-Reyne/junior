@@ -16,8 +16,6 @@ export default function UserProfileHeader(props) {
 		...currentUser,
 	});
 
-	console.log('EDIT FORM', editForm);
-
 	useEffect(() => {
 		setEditForm(prev => ({ ...prev, ...currentUser }));
 	}, [currentUser]);

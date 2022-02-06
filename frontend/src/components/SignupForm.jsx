@@ -49,7 +49,6 @@ export default function SignupForm(props) {
 			axios
 				.post('/api/devs/signup', devSignupData)
 				.then(res => {
-					console.log('FRONTEND EMAIL CHECK', res);
 					if (res.data) {
 						setEmailInUse(true);
 						throw console.error('email already in use');
@@ -58,7 +57,6 @@ export default function SignupForm(props) {
 				.then(res => {
 					axios.post('/api/auth/login', loginData).then(res => {
 						setCurrentUser(res.data);
-						console.log('RES FROM LOGIN', res.data);
 						setMatchPass(false);
 						setEmailInUse(false);
 					});
@@ -78,7 +76,6 @@ export default function SignupForm(props) {
 			axios
 				.post('/api/employers/signup', employerSignupData)
 				.then(res => {
-					console.log('FRONTEND EMAIL CHECK', res);
 					if (res.data) {
 						setEmailInUse(true);
 						throw console.error('email already in use');
@@ -87,7 +84,6 @@ export default function SignupForm(props) {
 				.then(res => {
 					axios.post('/api/auth/login', loginData).then(res => {
 						setCurrentUser(res.data);
-						console.log('RES FROM LOGIN', res.data);
 						setMatchPass(false);
 						setEmailInUse(false);
 					});

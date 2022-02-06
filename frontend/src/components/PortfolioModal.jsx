@@ -13,7 +13,6 @@ export default function Profile(props) {
 		project_id,
 		setOpenModal,
 	} = props;
-	console.log(project_id);
 
 	const [deleteWarning, setDeleteWarning] = useState(false);
 

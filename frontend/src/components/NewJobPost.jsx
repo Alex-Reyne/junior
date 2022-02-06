@@ -50,7 +50,6 @@ export default function NewJobPost(props) {
 		axios
 			.post('/api/job_postings/new', jobForm)
 			.then(res => {
-				console.log(res.data);
 				setJobForm({
 					employer_id: currentUser.id,
 					job_title: 'Job Title',

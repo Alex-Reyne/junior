@@ -56,15 +56,12 @@ export default function ApplicationCard(props) {
 	};
 
 	const acceptApplication = (postingId, postType) => {
-		console.log('accept ' + postingId);
 		if (postType === 'job') {
 			axios
 				.post(`../../../api/job_applications/accept/${postingId}`, {
 					job_application_id: postingId,
 				})
 				.then(res => {
-					console.log(res.data);
-					console.log('acceptApplication job');
 					setAccepted(res.data);
 					setButtonAccepted(false);
 					return res.data;
@@ -78,8 +75,6 @@ export default function ApplicationCard(props) {
 					gig_application_id: postingId,
 				})
 				.then(res => {
-					console.log(res.data);
-					console.log('acceptApplication gig');
 					setAccepted(res.data);
 					setButtonAccepted(false);
 				})
@@ -223,7 +218,6 @@ export default function ApplicationCard(props) {
 									color='primary'
 									disabled
 									onClick={() => {
-										// declineApplication(id, postType);
 										console.log('decline', app_id, postType);
 									}}
 								>

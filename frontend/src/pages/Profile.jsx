@@ -50,8 +50,6 @@ export default function Profile() {
 	const navigate = useNavigate();
 	const classes = useStyles();
 
-	console.log('IN PROFLE:', projectForm);
-
 	const [profile, setProfile] = useState({
 		dev: {},
 		projects: [],
@@ -68,14 +66,6 @@ export default function Profile() {
 	const location = useLocation();
 
 	const { dev_id } = useParams();
-	// console.log(`useParams: ${typeof useParams().dev_id}`);
-
-	// Check if logged in user = profile shown
-	// if (dev_id === id) {
-	// 	console.log(`edit profile dev_id: ${dev_id}, id: ${id}`);
-	// } else {
-	// 	console.log(`public profile dev_id: ${dev_id}, id: ${id}`);
-	// }
 
 	useEffect(() => {
 		if (dev_id === id) {

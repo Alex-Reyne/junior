@@ -21,10 +21,6 @@ const UserProvider = function (props) {
 		axios
 			.post('/api/auth/check')
 			.then(res => {
-				// console.log(
-				// 	res.data,
-				// 	'successfully retrieved cookie FROM USER PROVIDER'
-				// );
 				setCurrentUser(prev => res.data);
 			})
 			.catch(err => {

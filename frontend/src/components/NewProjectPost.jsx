@@ -14,8 +14,6 @@ export default function NewProjectPost(props) {
 		setOpenModal(false);
 	};
 
-	console.log('IN PROJECT POST:', projectForm);
-
 	const postProject = e => {
 		e.preventDefault();
 

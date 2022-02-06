@@ -197,7 +197,6 @@ export default function JobSearch(props) {
 	};
 
 	const handleSubmit = e => {
-		console.log(queryString, city, schedule, jobType, value[0], value[1]);
 		e.preventDefault();
 
 		if (!queryString && !city && !schedule && !jobType) {
@@ -247,7 +246,6 @@ export default function JobSearch(props) {
 
 	const openApplication = index => {
 		const posting = searchResults[index];
-		console.log(posting);
 
 		if (posting.deadline) {
 			axios
@@ -449,7 +447,6 @@ export default function JobSearch(props) {
 										value='React'
 										className={classes.checkbox}
 										onClick={e => {
-											console.log(e.target.value);
 											if (e.target.checked) {
 												setQueryString(e.target.value);
 											} else {
@@ -467,7 +464,6 @@ export default function JobSearch(props) {
 										value='JavaScript'
 										className={classes.checkbox}
 										onClick={e => {
-											console.log(e.target.value);
 											if (e.target.checked) {
 												setQueryString(e.target.value);
 											} else {
@@ -485,7 +481,6 @@ export default function JobSearch(props) {
 										value='Angular'
 										className={classes.checkbox}
 										onClick={e => {
-											console.log(e.target.value);
 											if (e.target.checked) {
 												setQueryString(e.target.value);
 											} else {
@@ -503,7 +498,6 @@ export default function JobSearch(props) {
 										value='SQL'
 										className={classes.checkbox}
 										onClick={e => {
-											console.log(e.target.value);
 											if (e.target.checked) {
 												setQueryString(e.target.value);
 											} else {
@@ -521,7 +515,6 @@ export default function JobSearch(props) {
 										value='Node.js'
 										className={classes.checkbox}
 										onClick={e => {
-											console.log(e.target.value);
 											if (e.target.checked) {
 												setQueryString(e.target.value);
 											} else {
@@ -539,7 +532,6 @@ export default function JobSearch(props) {
 										value='C#'
 										className={classes.checkbox}
 										onClick={e => {
-											console.log(e.target.value);
 											if (e.target.checked) {
 												setQueryString(e.target.value);
 											} else {
@@ -557,7 +549,6 @@ export default function JobSearch(props) {
 										value='Python'
 										className={classes.checkbox}
 										onClick={e => {
-											console.log(e.target.value);
 											if (e.target.checked) {
 												setQueryString(e.target.value);
 											} else {

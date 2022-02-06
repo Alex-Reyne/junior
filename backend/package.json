@@ -13,6 +13,7 @@
 		"bcryptjs": "^2.4.3",
 		"cookie-parser": "^1.4.6",
 		"debug": "~2.6.9",
+		"dotenv": "^16.0.0",
 		"express": "~4.16.1",
 		"express-session": "^1.17.2",
 		"morgan": "~1.9.1",
@@ -20,7 +21,6 @@
 		"pg-native": "^3.0.0"
 	},
 	"devDependencies": {
-		"dotenv": "^11.0.0",
 		"nodemon": "^2.0.15"
 	}
 }

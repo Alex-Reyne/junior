@@ -3,8 +3,8 @@
 	"version": "0.0.0",
 	"private": true,
 	"scripts": {
-		"start": "node index.js",
-		"nodemon": "./bin/www",
+		"start": "node ./bin/www",
+		"dev-start": "nodemon ./bin/www",
 		"dev": "npm run dev",
 		"db:reset": "node ./db/reset.js"
 	},

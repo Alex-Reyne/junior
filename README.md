@@ -12,13 +12,15 @@ Junior uses a REST api backend with Express.js, PostgresSQL, and Twilio.
 
 The frontend was built with React, React Router, SASS, and MaterialUI (MUI).
 
+## **You Can Explore Junior Here:**
+
+https://junior-client.herokuapp.com/dev/9
+
 ## Screen Captures
 
 ---
 
 ![Developer Page](frontend/public/videos/junior-dev-page.gif)
-
-![Job Search Page](frontend/public/videos/junior-search-page.gif)
 
 ## Stack
 

@@ -70,7 +70,9 @@ export default function UserProjects(props) {
 					key={'Project-grid-container-' + project.project_id}
 				>
 					<Card key={'Project-card-' + project.project_id}>
+					{currentUser.id == dev_id &&
 						<CardHeader
+							titleTypographyProps={{fontFamily: 'Assistant', fontWeight: '700'}}
 							title={project.title ? project.title : 'Untitled Project'}
 							action={currentUser.id == dev_id && 
 								<IconButton aria-label="settings">
@@ -78,6 +80,7 @@ export default function UserProjects(props) {
 								</IconButton>
 							}
 						/>
+					}
 						<CardActionArea
 							key={'Job-card-action' + project.project_id}
 							onClick={() => {
@@ -88,6 +91,7 @@ export default function UserProjects(props) {
 							<PortfolioCard
 								key={'Portfolio-card-' + project.project_id}
 								{...project}
+								dev_id={dev_id}
 							/>
 						</CardActionArea>
 						<CardActions key={'Job-card-actions-' + project.project_id}>

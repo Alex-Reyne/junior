@@ -76,12 +76,12 @@ export default function UserProjects(props) {
 					direction='column'
 					key={'Project-grid-container-' + project.project_id}
 				>
-					<Card key={'Project-card-' + project.project_id}>
+					<Card key={'Project-card-' + project.project_id} className='project-card'>
 					{currentUser.id == dev_id &&
 						<CardHeader
 							titleTypographyProps={{fontFamily: 'Assistant', fontWeight: '700'}}
 							title={project.title ? project.title : 'Untitled Project'}
-							action={currentUser.id == dev_id && 
+							action={
 								<PortfolioCardMenu
 									setModalData={setModalData}
 									openModal={openModal}
@@ -97,6 +97,13 @@ export default function UserProjects(props) {
 								handleView();
 							}}
 						>
+
+						{currentUser.id != dev_id &&
+							<CardHeader
+							titleTypographyProps={{fontFamily: 'Assistant', fontWeight: '700'}}
+							title={project.title ? project.title : 'Untitled Project'}
+							/>
+						}
 							<PortfolioCard
 								key={'Portfolio-card-' + project.project_id}
 								{...project}

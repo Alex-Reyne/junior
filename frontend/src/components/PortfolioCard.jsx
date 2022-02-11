@@ -13,7 +13,6 @@ export default function Profile(props) {
 
 	return (
 		<CardContent>
-			{currentUser.id != dev_id && <h1>{title ? title : 'Untitled Project'}</h1>}
 			<CardMedia
 				component='img'
 				image={thumbnail_photo_url ? thumbnail_photo_url : imgUrl}

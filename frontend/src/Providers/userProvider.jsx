@@ -15,6 +15,7 @@ const UserProvider = function (props) {
 		github_link: '',
 		live_link: '',
 		original_request: '',
+		edit: false,
 	});
 
 	useEffect(() => {
@@ -40,7 +41,8 @@ const UserProvider = function (props) {
 				});
 		}
 
-		setProjectForm({
+		setProjectForm(prev => ({
+			...prev,
 			junior_dev_id: currentUser.id,
 			title: 'New Project',
 			description: '',
@@ -48,7 +50,7 @@ const UserProvider = function (props) {
 			github_link: '',
 			live_link: '',
 			original_request: '',
-		});
+		}));
 	}, [currentUser, setSavedJobsGigs]);
 
 	const value = useMemo(() => ({

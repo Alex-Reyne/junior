@@ -36,6 +36,7 @@ export default function UserProjects(props) {
 		projects,
 		dev_id,
 	} = props;
+	
 	const {
 		currentUser,
 		profileView,

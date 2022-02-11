@@ -64,9 +64,9 @@ export default function PositionedMenu(props) {
 			thumbnail_photo_url,
 			github_link,
 			live_link,
-			original_request
+			original_request,
+			edit: true,
 		}));
-		console.log('Edit');
 	};
 		
 	return (
@@ -104,6 +104,7 @@ export default function PositionedMenu(props) {
 							// setProfileView('projects');
 							editProject();
 							setModalData(newProjectModal);
+							console.log('Edit',projectForm.edit);
 							handleView();
 							handleClose();
 						}}

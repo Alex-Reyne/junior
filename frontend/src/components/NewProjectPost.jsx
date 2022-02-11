@@ -9,41 +9,19 @@ export default function NewProjectPost(props) {
 	const { setOpenModal } = props;
 	const { currentUser, projectForm, setProjectForm } = useContext(UserContext);
 	const { state } = useLocation();
-	const [projectEdit, setProjectEdit] = useState(false);
 
 	const handleClose = () => {
 		setOpenModal(false);
 	};
+	console.log('projectEdit ',projectForm.edit);
 
-	const postProject = e => {
-		e.preventDefault();
-
-		axios
-			.post('/api/projects/new', projectForm)
-			.then(res => {
-				setProjectForm({
-					junior_dev_id: currentUser.id,
-					project_id: '',
-					title: 'New Project',
-					description: '',
-					thumbnail_photo_url: '',
-					github_link: '',
-					live_link: '',
-					original_request: '',
-				});
-				handleClose();
-			})
-			.catch(err => {
-				console.log(err);
-			});
-	};
-
-	const editProject = project => {
-		const {id, title, description, thumbnail_photo_url, github_link, live_link, original_request} = project;
+	const editProject = () => {
+		const {id, title, description, thumbnail_photo_url, github_link, live_link, original_request, edit} = projectForm;
 		axios
 		.post(`/api/projects/edit`, projectForm)
 		.then(res => {
-			setProjectForm({
+			setProjectForm(prev => ({
+				...prev,
 				project_id: id,
 				title,
 				description,
@@ -51,11 +29,56 @@ export default function NewProjectPost(props) {
 				github_link,
 				live_link,
 				original_request,
-			});
+				edit: false
+			}));
 			console.log('edit -> ',projectForm);
-			handleClose();
 			})
 			.catch(err => console.log(err));
+	};
+
+	const postProject = e => {
+		e.preventDefault();
+
+		if (!projectForm.edit) { 
+			axios
+				.post('/api/projects/new', projectForm)
+				.then(res => {
+					setProjectForm(prev => ({
+						...prev,
+						junior_dev_id: currentUser.id,
+						project_id: '',
+						title: 'New Project',
+						description: '',
+						thumbnail_photo_url: '',
+						github_link: '',
+						live_link: '',
+						original_request: '',
+						edit: false,
+					}));
+					handleClose();
+				})
+				.catch(err => {
+					console.log(err);
+				});
+		} else {
+			editProject();
+		};
+	};
+
+	const cancelProjectEdit = () => {
+		console.log('cancel');
+		setProjectForm(prev => ({
+			...prev,
+			junior_dev_id: currentUser.id,
+			project_id: '',
+			title: 'New Project',
+			description: '',
+			thumbnail_photo_url: '',
+			github_link: '',
+			live_link: '',
+			original_request: '',
+			edit: false,
+		}));
 	};
 
 	return (
@@ -170,7 +193,7 @@ export default function NewProjectPost(props) {
 					type='submit'
 					onClick={null}
 				>
-					Post Project
+					{projectForm.edit ? 'Edit Project' : 'Post Project'}
 				</Button>
 				<Button
 					id='cancel-project'
@@ -179,6 +202,7 @@ export default function NewProjectPost(props) {
 					size='large'
 					onClick={e => {
 						handleClose();
+						cancelProjectEdit();
 					}}
 				>
 					Cancel

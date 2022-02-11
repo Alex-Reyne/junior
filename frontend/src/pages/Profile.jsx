@@ -107,6 +107,7 @@ export default function Profile() {
 			setModalData={setModalData}
 			handleView={handleView}
 			projects={profile.projects}
+			dev_id={dev_id}
 		/>
 	);
 

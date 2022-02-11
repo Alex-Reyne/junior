@@ -13,14 +13,6 @@ export default function Profile(props) {
 
 	return (
 		<CardContent>
-			<CardHeader
-				title={title ? title : 'Untitled Project'}
-				action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-			/>
 			<CardMedia
 				component='img'
 				image={thumbnail_photo_url ? thumbnail_photo_url : imgUrl}

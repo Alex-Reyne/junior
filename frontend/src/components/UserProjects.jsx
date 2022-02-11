@@ -12,7 +12,10 @@ import {
 	Card,
 	CardActionArea,
 	CardActions,
+	CardHeader,
+	IconButton
 } from '@mui/material';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 import PortfolioCard from '../components/PortfolioCard';
 import PortfolioModal from '../components/PortfolioModal';
 import UserProfileHeader from '../components/UserProfileHeader';
@@ -30,6 +33,7 @@ export default function UserProjects(props) {
 		openModal,
 		setOpenModal,
 		projects,
+		dev_id,
 	} = props;
 	const { currentUser } = useContext(UserContext);
 
@@ -66,6 +70,14 @@ export default function UserProjects(props) {
 					key={'Project-grid-container-' + project.project_id}
 				>
 					<Card key={'Project-card-' + project.project_id}>
+						<CardHeader
+							title={project.title ? project.title : 'Untitled Project'}
+							action={currentUser.id == dev_id && 
+								<IconButton aria-label="settings">
+									<MoreVertIcon />
+								</IconButton>
+							}
+						/>
 						<CardActionArea
 							key={'Job-card-action' + project.project_id}
 							onClick={() => {

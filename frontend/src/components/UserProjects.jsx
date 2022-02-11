@@ -86,6 +86,9 @@ export default function UserProjects(props) {
 									setModalData={setModalData}
 									openModal={openModal}
 									setOpenModal={setOpenModal}
+									setProfileView={setProfileView}
+									profileView={profileView}
+									{...project}
 								/>	
 							}
 						/>

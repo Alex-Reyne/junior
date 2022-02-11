@@ -25,6 +25,17 @@ export default function PositionedMenu(props) {
 		setProjectForm,
 	} = useContext(UserContext);
 
+	const {
+		title,
+		description,
+		thumbnail_photo_url,
+		github_link,
+		live_link,
+		original_request
+	} = props;
+
+	// console.log(props.project);
+
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const open = Boolean(anchorEl);
 	const handleClick = event => {
@@ -37,14 +48,27 @@ export default function PositionedMenu(props) {
 	const handleView = () => {
 		openModal === true ? setOpenModal(false) : setOpenModal(true);
 	};
+
 	const newProjectModal = (
 		<NewProjectPost
-			setOpenModal={setOpenModal}
-			projectForm={projectForm}
-			setProjectForm={setProjectForm}
+		setOpenModal={setOpenModal}
+		projectForm={projectForm}
+		setProjectForm={setProjectForm}
 		/>
 	);
-
+	const editProject = () => {
+		setProjectForm(prev => ({
+			...prev,
+			title,
+			description,
+			thumbnail_photo_url,
+			github_link,
+			live_link,
+			original_request
+		}));
+		console.log('Edit');
+	};
+		
 	return (
 		<div >
 				<IconButton
@@ -77,8 +101,10 @@ export default function PositionedMenu(props) {
 				<div>
 					<MenuItem
 						onClick={e => {
-							console.log('Edit');
 							// setProfileView('projects');
+							editProject();
+							setModalData(newProjectModal);
+							handleView();
 							handleClose();
 						}}
 					>
@@ -87,8 +113,6 @@ export default function PositionedMenu(props) {
 					<MenuItem
 						onClick={e => {
 							console.log('Delete');
-							// setModalData(newProjectModal);
-							handleView();
 							handleClose();
 						}}
 					>

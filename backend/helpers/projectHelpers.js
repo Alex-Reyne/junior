@@ -33,7 +33,6 @@ module.exports = db => {
 		github_link,
 		live_link
 	) => {
-		console.log('here');
 		const query = {
 			text: `INSERT INTO projects (junior_dev_id, title, description, thumbnail_photo_url, github_link, live_link) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`,
 			values: [
@@ -50,9 +49,38 @@ module.exports = db => {
 			.then(result => result.rows[0])
 			.catch(err => err);
 	};
+
+	const editProject = params => {
+		console.log('editProject params: ',params);
+		const query = {
+			text: `UPDATE projects 
+				SET
+				title = $1
+				description = $2
+				thumbnail_photo_url = $3
+				github_link = $4
+				live_link = $5
+				WHERE id = $6
+				RETURNING *`,
+			values: [
+				params.junior_dev_id,
+				params.title,
+				params.description,
+				params.thumbnail_photo_url,
+				params.github_link,
+				params.live_link,
+				params.id
+			],
+		};
+		return db
+			.query(query)
+			.then(result => console.log(result))
+			.catch(err => err);
+	};
 	return {
 		getProjectById,
 		deleteProjectById,
 		addProject,
+		editProject
 	};
 };

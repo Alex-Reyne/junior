@@ -9,6 +9,7 @@ export default function NewProjectPost(props) {
 	const { setOpenModal } = props;
 	const { currentUser, projectForm, setProjectForm } = useContext(UserContext);
 	const { state } = useLocation();
+	const [projectEdit, setProjectEdit] = useState(false);
 
 	const handleClose = () => {
 		setOpenModal(false);
@@ -22,6 +23,7 @@ export default function NewProjectPost(props) {
 			.then(res => {
 				setProjectForm({
 					junior_dev_id: currentUser.id,
+					project_id: '',
 					title: 'New Project',
 					description: '',
 					thumbnail_photo_url: '',
@@ -34,6 +36,26 @@ export default function NewProjectPost(props) {
 			.catch(err => {
 				console.log(err);
 			});
+	};
+
+	const updateProject = project => {
+		const {id, title, description, thumbnail_photo_url, github_link, live_link, original_request} = project;
+		axios
+		.post(`/api/projects/edit`, projectForm)
+		.then(res => {
+			setProjectForm({
+				project_id: id,
+				title,
+				description,
+				thumbnail_photo_url,
+				github_link,
+				live_link,
+				original_request,
+			});
+			console.log('update -> ',projectForm);
+			handleClose();
+			})
+			.catch(err => console.log(err));
 	};
 
 	return (

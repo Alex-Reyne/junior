@@ -10,7 +10,6 @@ export default function Profile(props) {
 	const imgUrl =
 		'https://cdn.dribbble.com/users/409537/screenshots/14290034/media/965f91e1549a177acd63b8dced7592fa.png?compress=1&resize=1200x900&vertical=top';
 	const { currentUser } = useContext(UserContext);
-	console.log(`id: ${currentUser.id} dev_id: ${dev_id}`);
 
 	return (
 		<CardContent>

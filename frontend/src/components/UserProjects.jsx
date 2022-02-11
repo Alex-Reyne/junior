@@ -18,6 +18,7 @@ import {
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import PortfolioCard from '../components/PortfolioCard';
 import PortfolioModal from '../components/PortfolioModal';
+import PortfolioCardMenu from '../components/PortfolioCardMenu';
 import UserProfileHeader from '../components/UserProfileHeader';
 import UserProfileBio from '../components/UserProfileBio';
 import NewProjectPost from '../components/NewProjectPost';
@@ -35,7 +36,13 @@ export default function UserProjects(props) {
 		projects,
 		dev_id,
 	} = props;
-	const { currentUser } = useContext(UserContext);
+	const {
+		currentUser,
+		profileView,
+		setProfileView,
+		projectForm,
+		setProjectForm,
+	} = useContext(UserContext);
 
 	const handleView = () => {
 		openModal === true ? setOpenModal(false) : setOpenModal(true);
@@ -75,9 +82,11 @@ export default function UserProjects(props) {
 							titleTypographyProps={{fontFamily: 'Assistant', fontWeight: '700'}}
 							title={project.title ? project.title : 'Untitled Project'}
 							action={currentUser.id == dev_id && 
-								<IconButton aria-label="settings">
-									<MoreVertIcon />
-								</IconButton>
+								<PortfolioCardMenu
+									setModalData={setModalData}
+									openModal={openModal}
+									setOpenModal={setOpenModal}
+								/>	
 							}
 						/>
 					}

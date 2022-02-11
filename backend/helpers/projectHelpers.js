@@ -54,11 +54,10 @@ module.exports = db => {
 		console.log('editProject params: ',params);
 		const query = {
 			text: `UPDATE projects 
-				SET
-				title = $1
-				description = $2
-				thumbnail_photo_url = $3
-				github_link = $4
+				SET title = $1,
+				description = $2,
+				thumbnail_photo_url = $3,
+				github_link = $4,
 				live_link = $5
 				WHERE id = $6
 				RETURNING *`,

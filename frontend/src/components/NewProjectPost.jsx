@@ -38,7 +38,7 @@ export default function NewProjectPost(props) {
 			});
 	};
 
-	const updateProject = project => {
+	const editProject = project => {
 		const {id, title, description, thumbnail_photo_url, github_link, live_link, original_request} = project;
 		axios
 		.post(`/api/projects/edit`, projectForm)
@@ -52,7 +52,7 @@ export default function NewProjectPost(props) {
 				live_link,
 				original_request,
 			});
-			console.log('update -> ',projectForm);
+			console.log('edit -> ',projectForm);
 			handleClose();
 			})
 			.catch(err => console.log(err));

@@ -58,7 +58,28 @@ export default function Profile() {
 	const [modalData, setModalData] = useState();
 
 	const handleView = () => {
-		openModal === true ? setOpenModal(false) : setOpenModal(true);
+		if (openModal === true) {
+			setOpenModal(false);
+			cancelProjectEdit(); //clears the project form
+		} else {
+			setOpenModal(true);
+		}
+	};
+
+	const cancelProjectEdit = () => {
+		console.log('cancel');
+		setProjectForm(prev => ({
+			...prev,
+			junior_dev_id: currentUser.id,
+			project_id: '',
+			title: 'New Project',
+			description: '',
+			thumbnail_photo_url: '',
+			github_link: '',
+			live_link: '',
+			original_request: '',
+			edit: false,
+		}));
 	};
 
 	const { first_name, last_name, id } = currentUser;
@@ -95,7 +116,7 @@ export default function Profile() {
 				}
 			);
 		}
-	}, [currentUser, openModal, location]);
+	}, [currentUser, openModal, location, projectForm.edit]);
 
 	const userProjects = (
 		<UserProjects
@@ -119,7 +140,6 @@ export default function Profile() {
 		<UserApplications
 			projectForm={projectForm}
 			setProjectForm={setProjectForm}
-			setModalData={setModalData}
 			setModalData={setModalData}
 			openModal={openModal}
 			setOpenModal={setOpenModal}

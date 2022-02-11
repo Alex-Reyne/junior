@@ -62,7 +62,6 @@ module.exports = db => {
 				WHERE id = $6
 				RETURNING *`,
 			values: [
-				params.junior_dev_id,
 				params.title,
 				params.description,
 				params.thumbnail_photo_url,

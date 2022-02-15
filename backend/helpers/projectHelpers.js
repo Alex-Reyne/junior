@@ -29,16 +29,27 @@ module.exports = db => {
 		junior_dev_id,
 		title,
 		description,
+		original_request,
 		thumbnail_photo_url,
 		github_link,
 		live_link
 	) => {
 		const query = {
-			text: `INSERT INTO projects (junior_dev_id, title, description, thumbnail_photo_url, github_link, live_link) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`,
+			text: `INSERT INTO projects (
+				junior_dev_id,
+				title,
+				description,
+				original_request,
+				thumbnail_photo_url,
+				github_link,
+				live_link
+				) VALUES ($1, $2, $3, $4, $5, $6, $7)
+				RETURNING *`,
 			values: [
 				junior_dev_id,
 				title,
 				description,
+				original_request,
 				thumbnail_photo_url,
 				github_link,
 				live_link,
@@ -51,19 +62,20 @@ module.exports = db => {
 	};
 
 	const editProject = params => {
-		console.log('editProject params: ',params);
 		const query = {
 			text: `UPDATE projects 
 				SET title = $1,
 				description = $2,
-				thumbnail_photo_url = $3,
-				github_link = $4,
-				live_link = $5
-				WHERE id = $6
+				original_request = $3,
+				thumbnail_photo_url = $4,
+				github_link = $5,
+				live_link = $6
+				WHERE id = $7
 				RETURNING *`,
 			values: [
 				params.title,
 				params.description,
+				params.original_request,
 				params.thumbnail_photo_url,
 				params.github_link,
 				params.live_link,

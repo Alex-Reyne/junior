@@ -11,6 +11,7 @@ export default function Profile(props) {
 		github_link,
 		live_link,
 		project_id,
+		original_request,
 		setOpenModal,
 	} = props;
 
@@ -30,6 +31,10 @@ export default function Profile(props) {
 			<p className='description'>
 				{description ? description : 'No description'}
 			</p>
+			{original_request && <><h3>Original Request:</h3>
+			<p className='description'>
+				{original_request}
+			</p></>}
 			<CardActions sx={{ justifyContent: 'space-between' }}>
 				<Button
 					variant='contained'

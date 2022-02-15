@@ -9,30 +9,17 @@ export default function NewProjectPost(props) {
 	const { setOpenModal } = props;
 	const { currentUser, projectForm, setProjectForm } = useContext(UserContext);
 	const { state } = useLocation();
-
+	
 	const editProject = () => {
-		const {id, title, description, thumbnail_photo_url, github_link, live_link, original_request, edit} = projectForm;
-		console.log('edit -> ',projectForm);
 		axios
-			.post(`/api/projects/edit`, projectForm)
-			.then(res => {
-				setProjectForm(prev => ({
-					...prev,
-					project_id: id,
-					title,
-					description,
-					thumbnail_photo_url,
-					github_link,
-					live_link,
-					original_request,
-					edit: false
-				}));
+		.post(`/api/projects/edit`, projectForm)
+		.then(res => {
+				cancelProjectEdit();
 			})
 			.catch(err => console.log(err));
 	};
 
 	const cancelProjectEdit = () => {
-		console.log('cancel');
 		setProjectForm(prev => ({
 			...prev,
 			junior_dev_id: currentUser.id,

@@ -52,7 +52,7 @@ export default function UserProjects(props) {
 	const { first_name, last_name, id } = currentUser;
 
 	const projectsArray = projects;
-	// const parsedProjects = 'Test';
+	
 	const parsedProjects = projectsArray.map(project => {
 		const data = (
 			<PortfolioModal
@@ -87,8 +87,6 @@ export default function UserProjects(props) {
 									setModalData={setModalData}
 									openModal={openModal}
 									setOpenModal={setOpenModal}
-									setProfileView={setProfileView}
-									profileView={profileView}
 									{...project}
 								/>	
 							}

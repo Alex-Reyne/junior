@@ -67,7 +67,6 @@ export default function Profile() {
 	};
 
 	const cancelProjectEdit = () => {
-		console.log('cancel');
 		setProjectForm(prev => ({
 			...prev,
 			junior_dev_id: currentUser.id,

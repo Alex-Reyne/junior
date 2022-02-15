@@ -67,7 +67,7 @@ module.exports = db => {
 				params.thumbnail_photo_url,
 				params.github_link,
 				params.live_link,
-				params.id
+				params.project_id
 			],
 		};
 		return db

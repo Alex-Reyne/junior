@@ -31,10 +31,9 @@ export default function PositionedMenu(props) {
 		thumbnail_photo_url,
 		github_link,
 		live_link,
-		original_request
+		original_request,
+		project_id
 	} = props;
-
-	// console.log(props.project);
 
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const open = Boolean(anchorEl);
@@ -60,6 +59,7 @@ export default function PositionedMenu(props) {
 		setProjectForm(prev => ({
 			...prev,
 			title,
+			project_id,
 			description,
 			thumbnail_photo_url,
 			github_link,
@@ -104,7 +104,6 @@ export default function PositionedMenu(props) {
 							// setProfileView('projects');
 							editProject();
 							setModalData(newProjectModal);
-							console.log('Edit',projectForm.edit);
 							handleView();
 							handleClose();
 						}}

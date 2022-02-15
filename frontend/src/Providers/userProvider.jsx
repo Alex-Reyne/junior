@@ -9,6 +9,7 @@ const UserProvider = function (props) {
 	const [profileView, setProfileView] = useState('projects');
 	const [projectForm, setProjectForm] = useState({
 		junior_dev_id: currentUser.id,
+		project_id: '',
 		title: 'New Project',
 		description: '',
 		thumbnail_photo_url: '',
@@ -44,6 +45,7 @@ const UserProvider = function (props) {
 		setProjectForm(prev => ({
 			...prev,
 			junior_dev_id: currentUser.id,
+			project_id: '',
 			title: 'New Project',
 			description: '',
 			thumbnail_photo_url: '',

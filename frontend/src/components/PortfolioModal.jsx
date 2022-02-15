@@ -19,15 +19,6 @@ export default function Profile(props) {
 	const imgUrl =
 		'https://cdn.dribbble.com/users/409537/screenshots/14290034/media/965f91e1549a177acd63b8dced7592fa.png?compress=1&resize=1200x900&vertical=top';
 
-	const deleteProject = () => {
-		axios
-			.post(`/api/projects/delete/${project_id}`)
-			.then(res => {
-				setOpenModal(false);
-			})
-			.catch(err => console.log(err));
-	};
-
 	return (
 		<>
 			<h1>{title ? title : 'Untitled Project'}</h1>
@@ -60,7 +51,7 @@ export default function Profile(props) {
 				>
 					Live Link
 				</Button>
-				{deleteWarning && (
+				{/* {deleteWarning && (
 					<>
 						<div className='delete-warning'>
 							<p>are you sure?</p>
@@ -96,7 +87,7 @@ export default function Profile(props) {
 							Delete
 						</Button>
 					</>
-				)}
+				)} */}
 			</CardActions>
 		</>
 	);

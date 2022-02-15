@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Menu, MenuItem, DialogTitle, DialogContent, DialogContentText, DialogActions, CardContent } from '@mui/material';
+import { Button, Menu, MenuItem, CardActions, DialogTitle, DialogContent, DialogContentText, DialogActions, CardContent } from '@mui/material';
 import './styles/ProfileMenu.scss';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -46,7 +46,6 @@ export default function PositionedMenu(props) {
 		openModal === true ? setOpenModal(false) : setOpenModal(true);
 	};
 
-
 	const editProject = () => {
 		setProjectForm(prev => ({
 			...prev,
@@ -81,27 +80,23 @@ export default function PositionedMenu(props) {
 	const confirmationModal = (
 		<>
 			<CardContent>
-			{/* <DialogTitle id="alert-dialog-title"> */}
-				{/* {"Use Google's location service?"} */}
-			{/* </DialogTitle>
-			<DialogContent>
-				<DialogContentText id="alert-dialog-description"> */}
-					Are you sure you want to delete {title}?
-				{/* </DialogContentText>
-			</DialogContent> */}
-			{/* <DialogActions> */}
+				<h1>Delete project?</h1>
+				<h3>Are you sure you want to delete {title}?</h3>
+			</CardContent>
+			<CardActions sx={{ justifyContent: 'space-around' }}>
 				<Button
 					variant='contained'
 					color='primary'
+					className='modal-button'
 					onClick={deleteProject}>Delete</Button>
 				<Button
 					variant='contained'
 					color='primary'
+					className='modal-button'
 					onClick={e => setOpenModal(false)} autoFocus>
 					Cancel
 				</Button>
-			</CardContent>
-			{/* </DialogActions> */}
+			</CardActions>
 		</>
 	);
 		

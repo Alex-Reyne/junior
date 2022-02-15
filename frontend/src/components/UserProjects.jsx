@@ -35,6 +35,7 @@ export default function UserProjects(props) {
 		setOpenModal,
 		projects,
 		dev_id,
+		setDialogWidthFull
 	} = props;
 	
 	const {
@@ -87,6 +88,7 @@ export default function UserProjects(props) {
 									setModalData={setModalData}
 									openModal={openModal}
 									setOpenModal={setOpenModal}
+									setDialogWidthFull={setDialogWidthFull}
 									{...project}
 								/>	
 							}

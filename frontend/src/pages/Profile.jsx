@@ -56,8 +56,10 @@ export default function Profile() {
 	});
 	const [openModal, setOpenModal] = useState(false);
 	const [modalData, setModalData] = useState();
+	const [dialogWidthFull, setDialogWidthFull] = useState(true);
 
 	const handleView = () => {
+		setDialogWidthFull(true);
 		if (openModal === true) {
 			setOpenModal(false);
 			cancelProjectEdit(); //clears the project form
@@ -65,10 +67,6 @@ export default function Profile() {
 			setOpenModal(true);
 		}
 	};
-
-	// const handleDialogMaxWidthChange = event => {
-  //   setMaxWidth(event.target.value);
-  // };
 
 	const cancelProjectEdit = () => {
 		setProjectForm(prev => ({
@@ -129,6 +127,7 @@ export default function Profile() {
 			setOpenModal={setOpenModal}
 			modalData={modalData}
 			setModalData={setModalData}
+			setDialogWidthFull={setDialogWidthFull}
 			handleView={handleView}
 			projects={profile.projects}
 			dev_id={dev_id}
@@ -193,7 +192,7 @@ export default function Profile() {
 				<Dialog
 					open={openModal}
 					onClose={handleView}
-					fullWidth={true}
+					fullWidth={dialogWidthFull}
 					maxWidth={'md'}
 					scroll='body'
 					sx={{

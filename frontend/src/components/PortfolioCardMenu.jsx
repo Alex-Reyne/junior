@@ -13,7 +13,7 @@ import { IconButton } from '@mui/material';
 import { MoreVert } from '@mui/icons-material';
 
 export default function PositionedMenu(props) {
-	const { setModalData, openModal, setOpenModal } =
+	const { setModalData, openModal, setOpenModal, setDialogWidthFull } =
 		props;
 	const {
 		currentUser,
@@ -43,7 +43,7 @@ export default function PositionedMenu(props) {
 	};
 
 	const handleView = () => {
-		openModal === true ? setOpenModal(false) : setOpenModal(true);
+		openModal ? setOpenModal(false) : setOpenModal(true);
 	};
 
 	const editProject = () => {
@@ -144,6 +144,7 @@ export default function PositionedMenu(props) {
 					<MenuItem
 						onClick={e => {
 							setModalData(confirmationModal);
+							setDialogWidthFull(false);
 							handleView();
 							handleClose();
 						}}

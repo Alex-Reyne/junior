@@ -1,7 +1,5 @@
 import * as React from 'react';
-import Button from '@mui/material/Button';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
+import { Button, Menu, MenuItem, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material';
 import './styles/ProfileMenu.scss';
 import { useNavigate } from 'react-router-dom';
 
@@ -55,6 +53,26 @@ export default function PositionedMenu(props) {
 		setProjectForm={setProjectForm}
 		/>
 	);
+
+	const confirmationModal = (
+		<>
+			<DialogTitle id="alert-dialog-title">
+				{/* {"Use Google's location service?"} */}
+			</DialogTitle>
+			<DialogContent>
+				<DialogContentText id="alert-dialog-description">
+					Are you sure you want to delete this project?
+				</DialogContentText>
+			</DialogContent>
+			<DialogActions>
+				<Button onClick={handleClose}>Delete</Button>
+				<Button onClick={handleClose} autoFocus>
+					Cancel
+				</Button>
+			</DialogActions>
+		</>
+	);
+
 	const editProject = () => {
 		setProjectForm(prev => ({
 			...prev,
@@ -112,7 +130,8 @@ export default function PositionedMenu(props) {
 					</MenuItem>
 					<MenuItem
 						onClick={e => {
-							console.log('Delete');
+							setModalData(confirmationModal);
+							handleView();
 							handleClose();
 						}}
 					>

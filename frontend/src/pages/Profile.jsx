@@ -59,9 +59,9 @@ export default function Profile() {
 	const [dialogWidthFull, setDialogWidthFull] = useState(true);
 
 	const handleView = () => {
-		setDialogWidthFull(true);
 		if (openModal === true) {
 			setOpenModal(false);
+			setDialogWidthFull(true);
 			cancelProjectEdit(); //clears the project form
 		} else {
 			setOpenModal(true);

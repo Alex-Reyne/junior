@@ -88,12 +88,19 @@ export default function PositionedMenu(props) {
 					variant='contained'
 					color='primary'
 					className='modal-button'
-					onClick={deleteProject}>Delete</Button>
+					onClick={deleteProject}
+				>
+					Delete
+				</Button>
 				<Button
 					variant='contained'
 					color='primary'
 					className='modal-button'
-					onClick={e => setOpenModal(false)} autoFocus>
+					onClick={e => {
+						setOpenModal(false);
+					 	setDialogWidthFull(true);}}
+					autoFocus
+				>
 					Cancel
 				</Button>
 			</CardActions>

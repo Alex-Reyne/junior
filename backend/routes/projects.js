@@ -28,6 +28,7 @@ module.exports = ({ getProjectById, addProject, deleteProjectById, editProject }
 			junior_dev_id,
 			title,
 			description,
+			original_request,
 			thumbnail_photo_url,
 			github_link,
 			live_link,
@@ -37,6 +38,7 @@ module.exports = ({ getProjectById, addProject, deleteProjectById, editProject }
 			junior_dev_id,
 			title,
 			description,
+			original_request,
 			thumbnail_photo_url,
 			github_link,
 			live_link
@@ -46,6 +48,7 @@ module.exports = ({ getProjectById, addProject, deleteProjectById, editProject }
 			junior_dev_id,
 			title,
 			description,
+			original_request,
 			thumbnail_photo_url,
 			github_link,
 			live_link
@@ -62,7 +65,6 @@ module.exports = ({ getProjectById, addProject, deleteProjectById, editProject }
 
 	//Update user project 3001/api/projects/edit
 	router.post('/edit', (req, res) => {
-		console.log('router');
 		editProject(req.body)
 			.then(project => res.json(project))
 			.catch(err =>

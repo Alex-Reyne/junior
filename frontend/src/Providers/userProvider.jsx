@@ -12,10 +12,10 @@ const UserProvider = function (props) {
 		project_id: '',
 		title: 'New Project',
 		description: '',
+		original_request: '',
 		thumbnail_photo_url: '',
 		github_link: '',
 		live_link: '',
-		original_request: '',
 		edit: false,
 	});
 
@@ -48,10 +48,10 @@ const UserProvider = function (props) {
 			project_id: '',
 			title: 'New Project',
 			description: '',
+			original_request: '',
 			thumbnail_photo_url: '',
 			github_link: '',
 			live_link: '',
-			original_request: '',
 		}));
 	}, [currentUser, setSavedJobsGigs]);
 

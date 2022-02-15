@@ -7,11 +7,11 @@ export default function Profile(props) {
 	const {
 		title,
 		description,
+		original_request,
 		thumbnail_photo_url,
 		github_link,
 		live_link,
 		project_id,
-		original_request,
 		setOpenModal,
 	} = props;
 

@@ -52,7 +52,7 @@ module.exports = db => {
 	const getProjectsByDevId = id => {
 		const query = {
 			text: `SELECT junior_devs.id as junior_dev_id, first_name, last_name, email,
-        projects.id as project_id, title, description, thumbnail_photo_url, github_link, live_link
+        projects.id as project_id, projects.*
         FROM junior_devs
         INNER JOIN projects
         ON junior_devs.id = projects.junior_dev_id

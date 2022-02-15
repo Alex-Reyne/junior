@@ -26,10 +26,10 @@ export default function NewProjectPost(props) {
 			project_id: '',
 			title: 'New Project',
 			description: '',
+			original_request: '',
 			thumbnail_photo_url: '',
 			github_link: '',
 			live_link: '',
-			original_request: '',
 			edit: false,
 		}));
 	};

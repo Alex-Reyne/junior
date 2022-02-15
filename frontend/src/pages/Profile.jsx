@@ -75,10 +75,10 @@ export default function Profile() {
 			project_id: '',
 			title: 'New Project',
 			description: '',
+			original_request: '',
 			thumbnail_photo_url: '',
 			github_link: '',
 			live_link: '',
-			original_request: '',
 			edit: false,
 		}));
 	};

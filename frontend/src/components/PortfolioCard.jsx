@@ -5,7 +5,7 @@ import { UserContext } from '../Providers/userProvider';
 import { useContext } from 'react';
 
 export default function Profile(props) {
-	const { title, description, thumbnail_photo_url, github_link, live_link, dev_id } =
+	const { title, description, original_request, thumbnail_photo_url, github_link, live_link, dev_id } =
 		props;
 	const imgUrl =
 		'https://cdn.dribbble.com/users/409537/screenshots/14290034/media/965f91e1549a177acd63b8dced7592fa.png?compress=1&resize=1200x900&vertical=top';
@@ -21,6 +21,10 @@ export default function Profile(props) {
 			<p className='description'>
 				{description ? description : 'No description'}
 			</p>
+			{original_request && <><h3>Original Request:</h3>
+			<p className='description'>
+				{original_request}
+			</p></>}
 		</CardContent>
 	);
 }

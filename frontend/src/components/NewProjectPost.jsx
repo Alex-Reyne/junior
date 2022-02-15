@@ -81,7 +81,6 @@ export default function NewProjectPost(props) {
 				container
 				direction='row'
 				id='first-row'
-				xs={12}
 				gap={5}
 				sx={{ justifyContent: 'center', mt: '1rem' }}
 			>

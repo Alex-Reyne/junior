@@ -66,9 +66,9 @@ export default function Profile() {
 		}
 	};
 
-	const handleDialogMaxWidthChange = event => {
-    setMaxWidth(event.target.value);
-  };
+	// const handleDialogMaxWidthChange = event => {
+  //   setMaxWidth(event.target.value);
+  // };
 
 	const cancelProjectEdit = () => {
 		setProjectForm(prev => ({

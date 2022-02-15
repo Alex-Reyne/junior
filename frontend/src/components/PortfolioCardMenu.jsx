@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Button, Menu, MenuItem, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material';
+import { Button, Menu, MenuItem, DialogTitle, DialogContent, DialogContentText, DialogActions, CardContent } from '@mui/material';
 import './styles/ProfileMenu.scss';
 import { useNavigate } from 'react-router-dom';
-
+import axios from 'axios';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import { UserContext } from '../Providers/userProvider';
@@ -30,7 +30,7 @@ export default function PositionedMenu(props) {
 		github_link,
 		live_link,
 		original_request,
-		project_id
+		project_id,
 	} = props;
 
 	const [anchorEl, setAnchorEl] = React.useState(null);
@@ -46,32 +46,6 @@ export default function PositionedMenu(props) {
 		openModal === true ? setOpenModal(false) : setOpenModal(true);
 	};
 
-	const newProjectModal = (
-		<NewProjectPost
-		setOpenModal={setOpenModal}
-		projectForm={projectForm}
-		setProjectForm={setProjectForm}
-		/>
-	);
-
-	const confirmationModal = (
-		<>
-			<DialogTitle id="alert-dialog-title">
-				{/* {"Use Google's location service?"} */}
-			</DialogTitle>
-			<DialogContent>
-				<DialogContentText id="alert-dialog-description">
-					Are you sure you want to delete this project?
-				</DialogContentText>
-			</DialogContent>
-			<DialogActions>
-				<Button onClick={handleClose}>Delete</Button>
-				<Button onClick={handleClose} autoFocus>
-					Cancel
-				</Button>
-			</DialogActions>
-		</>
-	);
 
 	const editProject = () => {
 		setProjectForm(prev => ({
@@ -86,6 +60,50 @@ export default function PositionedMenu(props) {
 			edit: true,
 		}));
 	};
+
+	const deleteProject = () => {
+		axios
+			.post(`/api/projects/delete/${project_id}`)
+			.then(res => {
+				setOpenModal(false);
+			})
+			.catch(err => console.log(err));
+	};
+
+	const newProjectModal = (
+		<NewProjectPost
+		setOpenModal={setOpenModal}
+		projectForm={projectForm}
+		setProjectForm={setProjectForm}
+		/>
+	);
+
+	const confirmationModal = (
+		<>
+			<CardContent>
+			{/* <DialogTitle id="alert-dialog-title"> */}
+				{/* {"Use Google's location service?"} */}
+			{/* </DialogTitle>
+			<DialogContent>
+				<DialogContentText id="alert-dialog-description"> */}
+					Are you sure you want to delete {title}?
+				{/* </DialogContentText>
+			</DialogContent> */}
+			{/* <DialogActions> */}
+				<Button
+					variant='contained'
+					color='primary'
+					onClick={deleteProject}>Delete</Button>
+				<Button
+					variant='contained'
+					color='primary'
+					onClick={e => setOpenModal(false)} autoFocus>
+					Cancel
+				</Button>
+			</CardContent>
+			{/* </DialogActions> */}
+		</>
+	);
 		
 	return (
 		<div >
